@@ -35,8 +35,36 @@ final class RealNews
         'Laughing Squid'    => 'https://laughingsquid.com/feed/',
         'Atlas Obscura'     => 'https://www.atlasobscura.com/feeds/latest',
     ];
-    /** Daily filler / hard-news that sometimes rides along in odd-news feeds. */
-    private const SKIP_TITLE = '/^(On This Day|Famous birthdays|UPI Almanac|Watch Live|Live updates|Preview:)|\b(Putin|Zelensky|consulate|Indo-Pacific|Duma|Justice Department|Supreme Court|tariffs?|ceasefire|murder|murdered|indicted|manslaughter|homicide|shooting|stabb(?:ed|ing)|killed|rape|terror)\b/i';
+    /** General (non-weird) feeds — kept ONLY when a story reads as genuinely weird. */
+    private const FEEDS_GENERAL = [
+        'The Local (Germany)' => 'https://www.thelocal.de/feeds/rss.php',
+        'The Local (Europe)'  => 'https://www.thelocal.com/feeds/rss.php',
+    ];
+
+    /** Ordinary / heavy / sad news that isn't fun-weird — dropped everywhere. */
+    private const SKIP_TITLE = '/^(On This Day|Famous birthdays|UPI Almanac|Watch Live|Live updates|Preview:)'
+        . '|\b(Putin|Zelensky|Trump|Biden|Gaza|Israel|Ukraine|consulate|Indo-Pacific|Duma|Justice Department|Supreme Court'
+        . '|tariffs?|ceasefire|election|senate|parliament|GDP|inflation|interest rate|recession|layoffs?'
+        . '|murder|murdered|indicted|manslaughter|homicide|shooting|stabb(?:ed|ing)|killed|kills?|rape|terror|assault'
+        . '|dies|died|death|dead|obituary|funeral|mourning|passes away|passed away|tribute|aged \d+|cancer'
+        . '|haemorrhage|hemorrhage|hospital|hospitalised|hospitalized|ICU|critical condition|coma|stroke|heart attack'
+        . '|retires?|retirement|retiring|steps down|resigns?|sentenced|jailed|prison|court hears)\b/i';
+
+    /** Positive weird signal — REQUIRED for a story to make the cut. Silly beats merely unusual. */
+    private const WEIRD_MATCH = '/\b(bizarre|weird|strange|strangest|odd|oddest|unusual|freak|freakish|surreal|wacky|quirky'
+        . '|myster|weirdest|craziest|wildest|unbelievab|you won\'?t believe|jaw[- ]dropping|baffl|stunned|astonish|shock'
+        . '|record[- ]breaking|world record|guinness|world\'?s (?:largest|smallest|biggest|oldest|heaviest|tallest|longest|most)'
+        . '|giant|massive|enormous|tiny|miniature|escape[ds]?|escaped|on the loose|stuck|trapped|rescued?|accidentally'
+        . '|prank|goes viral|viral|ridiculous|hilarious|comical|absurd|florida man|drunk|boozy|naked|nude|underwear|pants'
+        . '|toilet|loo|poo|poop|fart|smell|stink|sewage|manure|ghost|haunted|spooky|alien|ufo|bigfoot|yeti|nessie|loch ness'
+        . '|conspiracy|psychic|fortune[- ]teller|lottery|jackpot|wins \S+ prize|unearth(?:ed)?|buried|treasure|hoard'
+        . '|two[- ]headed|mutant|shaped like|looks like|resembl|dressed as|costume|cosplay|inflatable|rubber duck|gnome'
+        . '|swallow(?:ed|s)?|ate|eats|bitten|attacked by|chased by|invaded by|infest|swarm|refuses?|demands?|elected'
+        . '|mayor|crowned|world\'?s ugliest|contest|championship of|festival of|giant vegetable|pumpkin|marrow'
+        . '|zoo|monkey|penguin|octopus|alligator|crocodile|goat|emu|llama|sloth|otter|raccoon|squirrel|pigeon|seagull'
+        . '|hamster|tortoise|turtle|python|snake|spider|parrot|kangaroo|koala|wombat|capybara|flamingo|peacock|ostrich'
+        . '|cheese|pizza|banana|sausage|beer|curry|nugget|sandwich|meatball)\b/i';
+
     private const TTL = 1800; // 30 min between live refreshes
 
     private static ?array $memo = null;
@@ -45,8 +73,9 @@ final class RealNews
     public static function items(int $limit = 40): array
     {
         if (self::$memo === null) {
-            $snap = self::readJson(self::snapshotFile());
-            self::$memo = $snap ?: self::merge([], self::archive());
+            // Live snapshot (ephemeral) -> committed seed -> archive-only.
+            $snap = self::readJson(self::snapshotFile()) ?: self::readJson(self::seedFile());
+            self::$memo = $snap ? self::merge($snap, []) : self::merge([], self::archive());
         }
         return array_slice(self::$memo, 0, $limit);
     }
@@ -77,15 +106,19 @@ final class RealNews
     public static function refresh(): int
     {
         $live = [];
-        $deadline = microtime(true) + 12; // never block a page render for long
-        foreach (self::FEEDS as $name => $url) {
-            if (microtime(true) > $deadline) {
-                break;
-            }
-            $xml = self::httpGet($url);
-            if ($xml !== null) {
-                foreach (self::parse($xml, $name) as $it) {
-                    $live[] = $it;
+        $deadline = microtime(true) + 14; // never block a page render for long
+        // Every live story must pass the weirdness gate; only the curated
+        // archive is exempt. Weird-section and general feeds alike are filtered.
+        foreach ([self::FEEDS, self::FEEDS_GENERAL] as $set) {
+            foreach ($set as $name => $url) {
+                if (microtime(true) > $deadline) {
+                    break 2;
+                }
+                $xml = self::httpGet($url);
+                if ($xml !== null) {
+                    foreach (self::parse($xml, $name) as $it) {
+                        $live[] = $it;
+                    }
                 }
             }
         }
@@ -110,6 +143,12 @@ final class RealNews
         return rtrim(BAKA_STORAGE, '/') . '/real-news.json';
     }
 
+    /** Committed fallback so real news always shows, even before a live fetch. */
+    public static function seedFile(): string
+    {
+        return BAKA_DATA . '/content/real-news-seed.json';
+    }
+
     private static function merge(array $live, array $archive): array
     {
         $out = [];
@@ -119,11 +158,34 @@ final class RealNews
             if ($key === '' || isset($seen[$key])) {
                 continue;
             }
+            if (empty($it['category'])) {
+                $it['category'] = self::categorize(($it['title'] ?? '') . ' ' . ($it['blurb'] ?? ''));
+            }
             $seen[$key] = true;
             $out[] = $it;
         }
         usort($out, fn($a, $b) => strcmp($b['date'] ?? '', $a['date'] ?? ''));
         return $out;
+    }
+
+    /** Bucket a story into one of the site's categories by keyword. */
+    private static function categorize(string $text): string
+    {
+        $t = mb_strtolower($text);
+        $map = [
+            'animals'  => '/\b(animal|zoo|dog|puppy|cat|kitten|cow|pig|horse|sheep|goat|duck|chicken|bird|fish|shark|whale|dolphin|seal|bear|fox|deer|moose|snake|python|spider|frog|bee|wasp|monkey|penguin|octopus|alligator|crocodile|emu|llama|sloth|otter|raccoon|squirrel|pigeon|seagull|hamster|tortoise|turtle|parrot|kangaroo|koala|wombat|capybara|flamingo|peacock|ostrich|pet|zoo)\b/',
+            'food'     => '/\b(food|pizza|burger|sandwich|cheese|chocolate|beer|wine|coffee|curry|nugget|sausage|banana|cake|recipe|restaurant|chef|mcdonald|kfc|taco|meatball|pancake|pumpkin|vegetable|fruit)\b/',
+            'tech'     => '/\b(ai|robot|app|iphone|android|google|facebook|tiktok|youtube|computer|internet|crypto|bitcoin|drone|gadget|software|video game|gamer|website|smartphone|viral video)\b/',
+            'science'  => '/\b(space|nasa|scientist|study|research|planet|moon|mars|dinosaur|fossil|dna|experiment|telescope|comet|meteor|quantum|physics|asteroid|galaxy|lab)\b/',
+            'politics' => '/\b(mayor|election|elected|government|council|president|minister|senate|parliament|vote|law|banned|ban\b|court|policy|official|candidate)\b/',
+        ];
+        foreach ($map as $slug => $re) {
+            if (preg_match($re, $t)) {
+                return $slug;
+            }
+        }
+        // Travel/place stories lean "world"; everything else is pure "weird".
+        return preg_match('/\b(country|island|village|town|city|border|tourist|travel|abroad|nation)\b/', $t) ? 'world' : 'weird';
     }
 
     private static function readJson(string $file): ?array
@@ -192,17 +254,22 @@ final class RealNews
             }
             $rawDesc = (string) $item->description;
             $blurb = trim(preg_replace('/\s+/', ' ', strip_tags(html_entity_decode($rawDesc, ENT_QUOTES | ENT_HTML5))));
+            // Weirdness gate: keep only genuinely silly/absurd stories.
+            if (!preg_match(self::WEIRD_MATCH, $title . ' ' . mb_substr($blurb, 0, 160))) {
+                continue;
+            }
             $ts = strtotime((string) $item->pubDate) ?: time();
             $host = parse_url($link, PHP_URL_HOST) ?: '';
             $out[] = [
-                'id'     => substr(md5($link), 0, 10),
-                'title'  => $title,
-                'blurb'  => mb_substr($blurb, 0, 240),
-                'source' => $source,
-                'domain' => preg_replace('/^www\./', '', (string) $host),
-                'url'    => $link,
-                'date'   => date('Y-m-d', $ts),
-                'image'  => self::extractImage($item, $rawDesc),
+                'id'       => substr(md5($link), 0, 10),
+                'title'    => $title,
+                'blurb'    => mb_substr($blurb, 0, 240),
+                'source'   => $source,
+                'domain'   => preg_replace('/^www\./', '', (string) $host),
+                'url'      => $link,
+                'date'     => date('Y-m-d', $ts),
+                'image'    => self::extractImage($item, $rawDesc),
+                'category' => self::categorize($title . ' ' . $blurb),
             ];
         }
         return $out;

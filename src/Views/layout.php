@@ -9,7 +9,28 @@ $lang = current_lang();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= e($title ?? 'Baka News') ?></title>
-    <meta name="description" content="Baka News — 100% fake, 100% cute. The world's least reliable newspaper.">
+    <?php
+      $ogDesc = 'Real weird-but-true news from around the world, plus 100% fake, 100% cute invented nonsense. The world\'s least reliable newspaper.';
+      $scheme = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https') ? 'https' : 'http';
+      $ogBase = rtrim(getenv('BAKA_BASE_URL') ?: ($scheme . '://' . ($_SERVER['HTTP_HOST'] ?? 'localhost')), '/');
+      $ogUrl  = $ogBase . ($_SERVER['REQUEST_URI'] ?? '/');
+      $ogImg  = $ogBase . '/assets/og.png';
+      $ogFile = BAKA_PUBLIC . '/assets/og.png';
+      if (is_file($ogFile)) { $ogImg .= '?v=' . filemtime($ogFile); }
+    ?>
+    <meta name="description" content="<?= e($ogDesc) ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Baka News">
+    <meta property="og:title" content="<?= e($title ?? 'Baka News') ?>">
+    <meta property="og:description" content="<?= e($ogDesc) ?>">
+    <meta property="og:url" content="<?= e($ogUrl) ?>">
+    <meta property="og:image" content="<?= e($ogImg) ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= e($title ?? 'Baka News') ?>">
+    <meta name="twitter:description" content="<?= e($ogDesc) ?>">
+    <meta name="twitter:image" content="<?= e($ogImg) ?>">
     <link rel="icon" href="<?= url('/assets/img/favicon.svg') ?>" type="image/svg+xml">
     <link rel="alternate" type="application/rss+xml" title="Baka News" href="<?= url('/feed.xml') ?>">
     <link rel="stylesheet" href="<?= asset('/assets/css/tokens.css') ?>">

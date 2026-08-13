@@ -9,5 +9,11 @@ declare(strict_types=1);
 require __DIR__ . '/../src/bootstrap.php';
 
 $n = \Baka\RealNews::refresh();
+// Also snapshot into the committed seed so a fresh deploy shows real news
+// immediately, before any live fetch happens.
+$snap = BAKA_STORAGE . '/real-news.json';
+if (is_file($snap)) {
+    copy($snap, \Baka\RealNews::seedFile());
+}
 echo "Refreshed real news: {$n} items ("
-   . \Baka\RealNews::sourceCount() . " distinct sources).\n";
+   . \Baka\RealNews::sourceCount() . " distinct sources). Seed updated.\n";

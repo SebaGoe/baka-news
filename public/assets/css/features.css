@@ -37,7 +37,7 @@
   display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin-bottom: .3rem;
 }
 .realcard__domain { color: var(--link); }
-.realcard__date { margin-left: auto; }
+.realcard__date { color: var(--ink-soft); }
 .realcard__headline {
   font-family: var(--font-display); font-weight: 800; line-height: 1.12;
   font-size: 1.15rem; margin: 0 0 .3rem;

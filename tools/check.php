@@ -21,6 +21,8 @@ $rii = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($root, Files
 foreach ($rii as $f) {
     $path = $f->getPathname();
     if (preg_match('#/(vendor|\.git|data/db|docs)/#', $path)) continue;
+    // External third-party news text (real edition) isn't our shipped content.
+    if (preg_match('#/real-(news-seed|archive)\.json$#', $path)) continue;
     $ext = strtolower($f->getExtension());
     if (!in_array($ext, ['php', 'js', 'css', 'json'], true)) continue;
     $txt = (string) file_get_contents($path);
