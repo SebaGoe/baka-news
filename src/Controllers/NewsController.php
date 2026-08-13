@@ -21,6 +21,30 @@ final class NewsController
         ]);
     }
 
+    /** Cheap health check for uptime pingers (keeps a free host awake). */
+    public function health(): void
+    {
+        header('Content-Type: text/plain; charset=utf-8');
+        echo "ok\n";
+        exit;
+    }
+
+    /** Refresh the real-news snapshot (only refetches when past its TTL). */
+    public function refreshReal(): void
+    {
+        $refreshed = false;
+        if (\Baka\RealNews::needsRefresh()) {
+            \Baka\RealNews::refresh();
+            $refreshed = true;
+        }
+        json_out([
+            'ok'          => true,
+            'refreshed'   => $refreshed,
+            'items'       => count(\Baka\RealNews::items(500)),
+            'sources'     => \Baka\RealNews::sourceCount(),
+        ]);
+    }
+
     /** "Surprise me" — bounce to a random article. */
     public function random(): void
     {
@@ -48,6 +72,18 @@ final class NewsController
 
     public function landing(): string
     {
+        if (current_mode() === 'real') {
+            // Keep the served snapshot warm; first visit after the TTL refreshes it.
+            if (\Baka\RealNews::needsRefresh()) {
+                @\Baka\RealNews::refresh();
+            }
+            return View::render('pages/real-landing', [
+                'title'      => 'Baka News — Real Edition (Genuinely True, Genuinely Absurd)',
+                'categories' => Content::categories(),
+                'stories'    => \Baka\RealNews::items(40),
+                'sources'    => \Baka\RealNews::sourceCount(),
+            ]);
+        }
         return View::render('pages/landing', [
             'title'       => 'Baka News — All the News That Never Happened',
             'categories'  => Content::categories(),

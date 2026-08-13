@@ -16,7 +16,12 @@ $w = Content::weather();
   </a>
 
   <div class="masthead__meta masthead__meta--right">
-    <div>"All the News That Never Happened"</div>
+    <?php $mode = current_mode(); ?>
+    <div class="edition-toggle" role="group" aria-label="Edition">
+      <a class="edition-toggle__btn<?= $mode === 'fake' ? ' is-active' : '' ?>" href="?mode=fake"<?= $mode === 'fake' ? ' aria-current="true"' : '' ?>>Baka (Fake)</a>
+      <a class="edition-toggle__btn edition-toggle__btn--real<?= $mode === 'real' ? ' is-active' : '' ?>" href="?mode=real"<?= $mode === 'real' ? ' aria-current="true"' : '' ?>>Real News</a>
+    </div>
+    <div><?= $mode === 'real' ? '"Genuinely True, Genuinely Absurd"' : '"All the News That Never Happened"' ?></div>
     <div class="masthead__tools">
       <form class="masthead__search" action="<?= url('/search') ?>" method="get" role="search">
         <label class="sr-only" for="site-search">Search stories</label>

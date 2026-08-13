@@ -2,7 +2,9 @@
 FROM php:8.2-cli-alpine
 
 # Build deps: oniguruma-dev for mbstring, sqlite-dev for pdo_sqlite.
-RUN apk add --no-cache oniguruma-dev sqlite-dev \
+# ca-certificates lets PHP fetch the live weird-news RSS feeds over HTTPS.
+RUN apk add --no-cache oniguruma-dev sqlite-dev ca-certificates \
+ && update-ca-certificates \
  && docker-php-ext-install pdo_sqlite mbstring
 
 WORKDIR /app

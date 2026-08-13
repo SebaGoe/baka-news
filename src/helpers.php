@@ -30,6 +30,24 @@ if (!function_exists('current_lang')) {
     }
 }
 
+if (!function_exists('current_mode')) {
+    /**
+     * Which edition the reader is viewing: 'fake' (our invented Baka News) or
+     * 'real' (genuinely true but absurd stories). Set via ?mode= and remembered
+     * in a cookie. Defaults to 'fake'.
+     */
+    function current_mode(): string
+    {
+        $allowed = ['fake', 'real'];
+        if (isset($_GET['mode']) && in_array($_GET['mode'], $allowed, true)) {
+            setcookie('baka_mode', $_GET['mode'], time() + 31536000, '/');
+            return $_GET['mode'];
+        }
+        $cookie = $_COOKIE['baka_mode'] ?? 'fake';
+        return in_array($cookie, $allowed, true) ? $cookie : 'fake';
+    }
+}
+
 if (!function_exists('t')) {
     /**
      * Pick the right translation from a {native,en,ja} bag for the current lang.
