@@ -100,6 +100,25 @@ final class NewsController
             http_response_code(404);
             return View::render('pages/404', ['title' => '404 — Category Vanished']);
         }
+
+        // In the Real edition, filter the real weird-news feed by this section.
+        if (current_mode() === 'real') {
+            if (\Baka\RealNews::needsRefresh()) {
+                @\Baka\RealNews::refresh();
+            }
+            $stories = array_values(array_filter(
+                \Baka\RealNews::items(500),
+                fn($s) => ($s['category'] ?? '') === $slug
+            ));
+            return View::render('pages/real-landing', [
+                'title'      => 'Baka News — Real: ' . ($cat['name_en'] ?? $slug),
+                'categories' => Content::categories(),
+                'stories'    => $stories,
+                'sources'    => \Baka\RealNews::sourceCount(),
+                'activeCat'  => $cat,
+            ]);
+        }
+
         return View::render('pages/landing', [
             'title'      => 'Baka News — ' . ($cat['name_en'] ?? $slug),
             'categories' => Content::categories(),

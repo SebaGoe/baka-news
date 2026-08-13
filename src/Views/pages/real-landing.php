@@ -1,14 +1,22 @@
 <?php
-/** @var array $stories @var int $sources */
+/** @var array $stories @var int $sources @var ?array $activeCat */
+$activeCat = $activeCat ?? null;
+$lang = current_lang();
+$catName = $activeCat ? ($lang === 'ja' ? $activeCat['name_ja'] : $activeCat['name_en']) : null;
 ?>
 <section class="newsroom real-edition">
-  <div class="section-head" style="--cat-color: var(--link)">
-    <h1 class="section-head__title">Real Edition &mdash; True but Ridiculous</h1>
-    <p class="section-head__blurb">
-      Genuinely real, genuinely absurd news of the weird &mdash; live from
-      <b><?= (int) $sources ?></b> sources plus a 30-year archive. Every headline links out to its
-      original article, because we didn&rsquo;t make these up. We wish we had.
-    </p>
+  <div class="section-head" style="--cat-color: <?= e($activeCat['color'] ?? 'var(--link)') ?>">
+    <?php if ($activeCat): ?>
+      <h1 class="section-head__title"><?= e($catName) ?> &mdash; Real &amp; Weird</h1>
+      <p class="section-head__blurb">Genuinely true stories filed under <b><?= e($catName) ?></b>. Every headline links out to its source.</p>
+    <?php else: ?>
+      <h1 class="section-head__title">Real Edition &mdash; True but Ridiculous</h1>
+      <p class="section-head__blurb">
+        Genuinely real, genuinely absurd news of the weird &mdash; live from
+        <b><?= (int) $sources ?></b> sources plus a 30-year archive. Every headline links out to its
+        original article, because we didn&rsquo;t make these up. We wish we had.
+      </p>
+    <?php endif; ?>
   </div>
 
   <div class="real-banner">
@@ -19,7 +27,13 @@
   </div>
 
   <?php if (empty($stories)): ?>
-    <p class="empty">The real world is briefly behaving itself. Try again shortly.</p>
+    <p class="empty">
+      <?php if ($activeCat): ?>
+        No genuinely weird <b><?= e($catName) ?></b> news right now. The real world is being suspiciously sensible here &mdash; check back later or pick another section.
+      <?php else: ?>
+        The real world is briefly behaving itself. Try again shortly.
+      <?php endif; ?>
+    </p>
   <?php else: ?>
   <div class="grid">
     <?php foreach ($stories as $i => $s):
