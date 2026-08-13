@@ -48,7 +48,9 @@ final class RealNews
         . '|murder|murdered|indicted|manslaughter|homicide|shooting|stabb(?:ed|ing)|killed|kills?|rape|terror|assault'
         . '|dies|died|death|dead|obituary|funeral|mourning|passes away|passed away|tribute|aged \d+|cancer'
         . '|haemorrhage|hemorrhage|hospital|hospitalised|hospitalized|ICU|critical condition|coma|stroke|heart attack'
-        . '|retires?|retirement|retiring|steps down|resigns?|sentenced|jailed|prison|court hears)\b/i';
+        . '|retires?|retirement|retiring|steps down|resigns?|sentenced|jailed|prison|court hears'
+        . '|war|sitcom|TV (?:show|series|star|drama)|drama series|returns to (?:our |the )?screens?|season \d+'
+        . '|renewed for|new series|episode|trailer|premiere|box office|Eurovision|Oscars?|Emmys?|Grammys?|BAFTAs?)\b/i';
 
     /** Positive weird signal — REQUIRED for a story to make the cut. Silly beats merely unusual. */
     private const WEIRD_MATCH = '/\b(bizarre|weird|strange|strangest|odd|oddest|unusual|freak|freakish|surreal|wacky|quirky'
