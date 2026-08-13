@@ -1,0 +1,74 @@
+{
+  "exchange": [
+    {
+      "symbol": "GHST",
+      "name_en": "Ghost Coin",
+      "name_ja": "ゴーストコイン",
+      "price": 66.6,
+      "change": 6.66
+    },
+    {
+      "symbol": "SNDW",
+      "name_en": "Imaginary Sandwiches",
+      "name_ja": "空想サンド",
+      "price": 8.12,
+      "change": -0.44
+    },
+    {
+      "symbol": "NAPS",
+      "name_en": "Nap Futures",
+      "name_ja": "昼寝先物",
+      "price": 40.4,
+      "change": 4.04
+    },
+    {
+      "symbol": "SOCK",
+      "name_en": "Single Socks Ltd.",
+      "name_ja": "片方靴下社",
+      "price": 1.0,
+      "change": -0.99
+    },
+    {
+      "symbol": "VIBE",
+      "name_en": "Ambient Vibes Inc.",
+      "name_ja": "ふんいき株式会社",
+      "price": 88.0,
+      "change": 0.0
+    },
+    {
+      "symbol": "MOON",
+      "name_en": "Moon Real Estate",
+      "name_ja": "月の不動産",
+      "price": 384.4,
+      "change": 12.1
+    },
+    {
+      "symbol": "DIAL",
+      "name_en": "Dial-Up Nostalgia",
+      "name_ja": "ダイヤルアップ郷愁",
+      "price": 19.98,
+      "change": 3.3
+    },
+    {
+      "symbol": "CATZ",
+      "name_en": "Cat Management Co.",
+      "name_ja": "ネコ経営",
+      "price": 99.9,
+      "change": 9.9
+    },
+    {
+      "symbol": "TODO",
+      "name_en": "Unfinished Tasks",
+      "name_ja": "未完のタスク",
+      "price": 0.5,
+      "change": -2.2
+    },
+    {
+      "symbol": "BOO",
+      "name_en": "Spooky Holdings",
+      "name_ja": "スプーキー・ホールディングス",
+      "price": 31.0,
+      "change": 1.31
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "sebastian/baka-news",
+  "description": "Baka News — the world's most trustworthy source of completely fake news.",
+  "type": "project",
+  "require": {
+    "php": ">=8.2"
+  },
+  "autoload": {
+    "psr-4": { "Baka\\": "src/" },
+    "files": ["src/helpers.php"]
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

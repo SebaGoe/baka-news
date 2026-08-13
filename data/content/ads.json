@@ -1,0 +1,93 @@
+{
+  "_note": "slot: feed = injected between articles; sidebar = rail; banner = top/bottom. cta is fake and links to /ads.",
+  "ads": [
+    {
+      "id": "y2k-spray",
+      "slot": "feed",
+      "bg": "#ffef9f",
+      "title_en": "Y2K BUG SPRAY",
+      "title_ja": "Y2K バグ・スプレー",
+      "body_en": "Protect your computer from the Year 2000! Only 26 years too late!",
+      "body_ja": "西暦2000年からPCを守れ！たった26年遅れ！",
+      "cta_en": "SPRAY NOW",
+      "cta_ja": "今すぐ噴射"
+    },
+    {
+      "id": "ghost-insurance",
+      "slot": "sidebar",
+      "bg": "#e8e0ff",
+      "title_en": "GHOST INSURANCE",
+      "title_ja": "おばけ保険",
+      "body_en": "Because you never know. Covers hauntings, cold spots, and mild spookiness.",
+      "body_ja": "何が起きるか分かりません。心霊現象・冷気・軽い不気味さを補償。",
+      "cta_en": "GET COVERED",
+      "cta_ja": "加入する"
+    },
+    {
+      "id": "baka-deli",
+      "slot": "feed",
+      "bg": "#ffe0d6",
+      "title_en": "BAKA DELI",
+      "title_ja": "バカ・デリ",
+      "body_en": "Sandwiches that may or may not exist. Definitely delicious, possibly imaginary.",
+      "body_ja": "存在するかもしれないサンドイッチ。確実に美味、たぶん架空。",
+      "cta_en": "ORDER (maybe)",
+      "cta_ja": "注文（たぶん）"
+    },
+    {
+      "id": "modem-hotline",
+      "slot": "sidebar",
+      "bg": "#d6f0ff",
+      "title_en": "DIAL-UP NOSTALGIA HOTLINE",
+      "title_ja": "ダイヤルアップ懐古ホットライン",
+      "body_en": "Call to hear the modem sound again. Warning: emotional.",
+      "body_ja": "電話するとあのモデム音が聞けます。注意：泣けます。",
+      "cta_en": "CALL 1-800-SCREECH",
+      "cta_ja": "電話する"
+    },
+    {
+      "id": "rent-cloud",
+      "slot": "feed",
+      "bg": "#e6f7ff",
+      "title_en": "RENT-A-CLOUD",
+      "title_ja": "レンタクラウド",
+      "body_en": "Own a piece of the sky. Fluffy. Non-refundable. May rain.",
+      "body_ja": "空の一部を所有。ふわふわ。返金不可。雨が降る場合あり。",
+      "cta_en": "CLAIM YOUR CLOUD",
+      "cta_ja": "雲を確保"
+    },
+    {
+      "id": "invisible-umbrella",
+      "slot": "sidebar",
+      "bg": "#f0f0f0",
+      "title_en": "INVISIBLE UMBRELLA CO.",
+      "title_ja": "透明かさ株式会社",
+      "body_en": "You can't see it, and neither can the rain. Results may vary wildly.",
+      "body_ja": "あなたにも雨にも見えません。効果には大きな個人差。",
+      "cta_en": "SEE NOTHING",
+      "cta_ja": "何も見ない"
+    },
+    {
+      "id": "under-construction",
+      "slot": "banner",
+      "bg": "#fff2b3",
+      "title_en": "UNDER CONSTRUCTION SIGNS, INC.",
+      "title_ja": "工事中の看板株式会社",
+      "body_en": "For the authentic 1998 website feel. Animated GIF sold separately.",
+      "body_ja": "本物の1998年サイト感を演出。アニメGIFは別売り。",
+      "cta_en": "BUILD FOREVER",
+      "cta_ja": "永遠に工事"
+    },
+    {
+      "id": "pixel-polish",
+      "slot": "feed",
+      "bg": "#ffe6f7",
+      "title_en": "PIXEL POLISH",
+      "title_ja": "ピクセル磨き",
+      "body_en": "Make your monitor shinier, one pixel at a time. Includes tiny cloth.",
+      "body_ja": "1ピクセルずつモニターをピカピカに。極小クロス付き。",
+      "cta_en": "POLISH UP",
+      "cta_ja": "磨く"
+    }
+  ]
+}

@@ -1,0 +1,788 @@
+{
+  "_note": "Each article has a native-language original plus English + Japanese translations. Keep everything absurd and obviously fictional. body_* are arrays of paragraphs. size hints the newspaper layout: lead | feature | standard | brief.",
+  "articles": [
+    {
+      "id": "cat-mayor-jp",
+      "country": "Japan",
+      "flag": "JPN",
+      "lang": "ja",
+      "categories": [
+        "politics",
+        "animals"
+      ],
+      "size": "lead",
+      "date": "2026-08-12",
+      "author": "田中・ぶんきち記者",
+      "headline": {
+        "native": "近所のネコ、町内会長に満場一致で当選",
+        "en": "Neighborhood Cat Elected Association President in Landslide",
+        "ja": "近所のネコ、町内会長に満場一致で当選"
+      },
+      "dek": {
+        "native": "公約は「昼寝の自由化」",
+        "en": "Ran on a platform of mandatory afternoon naps",
+        "ja": "公約は「昼寝の自由化」"
+      },
+      "body": {
+        "native": [
+          "三丁目に住むネコの「みけ」さんが、町内会長選挙で全票を獲得し当選した。対立候補は不在だった。",
+          "みけさんは記者会見で3時間眠り続け、「力強い沈黙だ」と支持者は評価した。",
+          "初仕事はゴミ捨て場の段ボール箱を『新庁舎』に指定することだという。"
+        ],
+        "en": [
+          "A cat named Mike from the third block has won the neighborhood association presidency with 100% of the vote. There were no other candidates.",
+          "Mike slept through the entire three-hour press conference, which supporters called 'a powerful silence.'",
+          "The first official act will be designating a cardboard box at the garbage station as the 'new town hall.'"
+        ],
+        "ja": [
+          "三丁目に住むネコの「みけ」さんが、町内会長選挙で全票を獲得し当選しました。対立候補はいませんでした。",
+          "みけさんは3時間の記者会見の間ずっと眠っており、支持者はこれを『力強い沈黙』と称賛しました。",
+          "最初の公務は、ゴミ捨て場の段ボール箱を『新しい町役場』に指定することだそうです。"
+        ]
+      },
+      "image": "/assets/img/news/photos/cat-mayor-jp.jpg",
+      "image_credit": "Photo: Grendelkhan / CC BY-SA 4.0 — Wikimedia Commons"
+    },
+    {
+      "id": "traffic-light-de",
+      "country": "Germany",
+      "flag": "DEU",
+      "lang": "de",
+      "categories": [
+        "world",
+        "weird"
+      ],
+      "size": "feature",
+      "date": "2026-08-12",
+      "author": "Klaus Wartemann",
+      "headline": {
+        "native": "Mann wartet 45 Minuten an kaputter Ampel – aus Respekt",
+        "en": "Man Waits 45 Minutes at a Broken Traffic Light Out of Respect",
+        "ja": "壊れた信号で45分間待つ男、「敬意のため」"
+      },
+      "dek": {
+        "native": "Die Ampel war seit Dienstag außer Betrieb",
+        "en": "The light had been out of order since Tuesday",
+        "ja": "信号は火曜から故障していた"
+      },
+      "body": {
+        "native": [
+          "Ein Mann aus Wolfsburg wartete 45 Minuten an einer roten Ampel, die nachweislich seit Tagen defekt war.",
+          "„Rot ist Rot“, erklärte er ruhig. „Ordnung muss sein.“",
+          "Hinter ihm bildete sich eine Schlange von zwölf Fahrrädern, die ebenfalls warteten."
+        ],
+        "en": [
+          "A man from Wolfsburg waited 45 minutes at a red light that had provably been broken for days.",
+          "'Red is red,' he explained calmly. 'There must be order.'",
+          "A queue of twelve bicycles formed behind him, all also waiting."
+        ],
+        "ja": [
+          "ヴォルフスブルクの男性が、数日前から明らかに故障していた赤信号で45分間待ち続けました。",
+          "「赤は赤だ」と彼は冷静に説明した。「秩序は必要だ」。",
+          "彼の後ろには12台の自転車の列ができ、いずれも一緒に待っていました。"
+        ]
+      }
+    },
+    {
+      "id": "baguette-short-fr",
+      "country": "France",
+      "flag": "FRA",
+      "lang": "fr",
+      "categories": [
+        "food",
+        "politics"
+      ],
+      "size": "standard",
+      "date": "2026-08-11",
+      "author": "Amélie Croûton",
+      "headline": {
+        "native": "Le gouvernement déclare une baguette « trop courte de 2 cm »",
+        "en": "Government Officially Declares a Baguette '2cm Too Short'",
+        "ja": "政府、バゲットを「2cm短すぎる」と公式認定"
+      },
+      "dek": {
+        "native": "Une enquête nationale est ouverte",
+        "en": "A national inquiry has been opened",
+        "ja": "国家調査が開始された"
+      },
+      "body": {
+        "native": [
+          "Le Ministère du Pain a saisi une baguette jugée « inacceptablement courte » dans une boulangerie de Lyon.",
+          "Le boulanger risque une amende symbolique d'un croissant.",
+          "« C'est une question d'honneur », a déclaré un porte-parole en mangeant la preuve."
+        ],
+        "en": [
+          "The Ministry of Bread seized a baguette deemed 'unacceptably short' from a bakery in Lyon.",
+          "The baker faces a symbolic fine of one croissant.",
+          "'It is a matter of honor,' a spokesperson said while eating the evidence."
+        ],
+        "ja": [
+          "パン省は、リヨンのパン屋から「容認できないほど短い」と判断されたバゲットを押収しました。",
+          "パン職人にはクロワッサン1個という象徴的な罰金が科される見込みです。",
+          "「これは名誉の問題だ」と報道官は証拠を食べながら語りました。"
+        ]
+      }
+    },
+    {
+      "id": "pineapple-court-it",
+      "country": "Italy",
+      "flag": "ITA",
+      "lang": "it",
+      "categories": [
+        "food"
+      ],
+      "size": "standard",
+      "date": "2026-08-11",
+      "author": "Giulia Margherita",
+      "headline": {
+        "native": "La Corte vieta l'ananas sulla pizza «per sempre»",
+        "en": "Court Bans Pineapple on Pizza 'Forever'",
+        "ja": "裁判所、ピザのパイナップルを「永久に」禁止"
+      },
+      "dek": {
+        "native": "L'ananas farà appello",
+        "en": "The pineapple plans to appeal",
+        "ja": "パイナップル側は控訴の方針"
+      },
+      "body": {
+        "native": [
+          "Una corte immaginaria ha stabilito che l'ananas sulla pizza è « un crimine contro il pomodoro ».",
+          "La difesa dell'ananas, composta da tre banane, non si è presentata.",
+          "La sentenza sarà scolpita nel marmo, poi coperta di mozzarella."
+        ],
+        "en": [
+          "An imaginary court has ruled that pineapple on pizza is 'a crime against the tomato.'",
+          "The pineapple's defense team, made up of three bananas, failed to appear.",
+          "The verdict will be carved in marble, then covered in mozzarella."
+        ],
+        "ja": [
+          "ある架空の裁判所が、ピザのパイナップルは「トマトに対する犯罪」であると判断しました。",
+          "3本のバナナからなるパイナップルの弁護団は出廷しませんでした。",
+          "判決は大理石に刻まれ、その後モッツァレラで覆われる予定です。"
+        ]
+      }
+    },
+    {
+      "id": "silent-man-fi",
+      "country": "Finland",
+      "flag": "FIN",
+      "lang": "fi",
+      "categories": [
+        "world",
+        "weird"
+      ],
+      "size": "brief",
+      "date": "2026-08-10",
+      "author": "Aino Hiljainen",
+      "headline": {
+        "native": "Mies rikkoi hiljaisuusennätyksen: 12 vuotta sanomatta mitään",
+        "en": "Man Breaks Silence Record: 12 Years Without Saying Anything",
+        "ja": "男、沈黙の記録更新：12年間無言"
+      },
+      "dek": {
+        "native": "Hän ei edes yrittänyt",
+        "en": "He wasn't even trying",
+        "ja": "本人は狙っていなかった"
+      },
+      "body": {
+        "native": [
+          "Eräs mies Lapista ei sanonut mitään 12 vuoteen ja rikkoi kansallisen ennätyksen.",
+          "«En huomannut», hän kommentoi ja palasi hiljaisuuteen."
+        ],
+        "en": [
+          "A man from Lapland said nothing for 12 years and broke the national record.",
+          "'Didn't notice,' he commented, then returned to silence."
+        ],
+        "ja": [
+          "ラップランドのある男性が12年間何も言わず、国内記録を更新しました。",
+          "「気づかなかった」とコメントし、再び沈黙に戻りました。"
+        ]
+      }
+    },
+    {
+      "id": "emu-defense-au",
+      "country": "Australia",
+      "flag": "AUS",
+      "lang": "en",
+      "categories": [
+        "politics",
+        "animals"
+      ],
+      "size": "feature",
+      "date": "2026-08-10",
+      "author": "Sheila Bushwacker",
+      "headline": {
+        "native": "Emu Appointed Minister of Defence After Winning Previous War",
+        "en": "Emu Appointed Minister of Defence After Winning Previous War",
+        "ja": "エミュー、前回の戦争勝利を受け国防大臣に就任"
+      },
+      "dek": {
+        "native": "Cabinet cites 'undefeated record'",
+        "en": "Cabinet cites 'undefeated record'",
+        "ja": "内閣は「無敗の実績」を評価"
+      },
+      "body": {
+        "native": [
+          "Following a historically undefeated record against human forces, an emu named Kevin has been sworn in as Minister of Defence.",
+          "Kevin's first policy: replace all fences with 'polite suggestions.'",
+          "The opposition, a flock of magpies, has vowed to swoop."
+        ],
+        "en": [
+          "Following a historically undefeated record against human forces, an emu named Kevin has been sworn in as Minister of Defence.",
+          "Kevin's first policy: replace all fences with 'polite suggestions.'",
+          "The opposition, a flock of magpies, has vowed to swoop."
+        ],
+        "ja": [
+          "人類に対して歴史的に無敗の記録を持つケビンという名のエミューが、国防大臣に就任しました。",
+          "ケビンの最初の政策は、すべてのフェンスを「丁寧なお願い」に置き換えることです。",
+          "野党であるカササギの群れは、急降下攻撃を誓っています。"
+        ]
+      }
+    },
+    {
+      "id": "sun-redcard-br",
+      "country": "Brazil",
+      "flag": "BRA",
+      "lang": "pt",
+      "categories": [
+        "weird",
+        "world"
+      ],
+      "size": "standard",
+      "date": "2026-08-09",
+      "author": "Rafael Apito",
+      "headline": {
+        "native": "Árbitro mostra cartão vermelho para o Sol por brilhar demais",
+        "en": "Referee Shows the Sun a Red Card for Shining Too Brightly",
+        "ja": "審判、まぶしすぎる太陽にレッドカード"
+      },
+      "dek": {
+        "native": "O Sol se recusou a sair de campo",
+        "en": "The Sun refused to leave the field",
+        "ja": "太陽は退場を拒否"
+      },
+      "body": {
+        "native": [
+          "Durante uma partida, o árbitro expulsou o Sol alegando « ofuscamento antidesportivo ».",
+          "O Sol permaneceu no céu, e a partida foi adiada para a noite.",
+          "A Lua entrou como substituta e foi vaiada por ser « fraca »."
+        ],
+        "en": [
+          "During a match, the referee ejected the Sun for 'unsporting glare.'",
+          "The Sun remained in the sky, and the match was postponed to nighttime.",
+          "The Moon came on as a substitute and was booed for being 'too dim.'"
+        ],
+        "ja": [
+          "試合中、審判は「スポーツマンシップに反するまぶしさ」を理由に太陽を退場させました。",
+          "太陽は空に残り続け、試合は夜に延期されました。",
+          "交代で月が登場しましたが、「暗すぎる」とブーイングを受けました。"
+        ]
+      }
+    },
+    {
+      "id": "cow-youtube-in",
+      "country": "India",
+      "flag": "IND",
+      "lang": "hi",
+      "categories": [
+        "animals",
+        "tech"
+      ],
+      "size": "standard",
+      "date": "2026-08-09",
+      "author": "प्रिया दूधवाला",
+      "headline": {
+        "native": "गाय ने खाना पकाने का यूट्यूब चैनल शुरू किया, दस लाख सब्सक्राइबर",
+        "en": "Cow Starts YouTube Cooking Channel, Hits One Million Subscribers",
+        "ja": "牛が料理系YouTubeを開設、登録者100万人突破"
+      },
+      "dek": {
+        "native": "विशेषता: सिर्फ घास की रेसिपी",
+        "en": "Specialty: grass, prepared 40 ways",
+        "ja": "得意料理：草を40通りに調理"
+      },
+      "body": {
+        "native": [
+          "एक गाय ने खाना पकाने का चैनल शुरू किया जिसमें हर रेसिपी में केवल घास है।",
+          "सबसे लोकप्रिय वीडियो: « घास, लेकिन धीरे-धीरे चबाई हुई »।",
+          "प्रायोजक: एक खेत।"
+        ],
+        "en": [
+          "A cow launched a cooking channel where every recipe features only grass.",
+          "Most popular video: 'Grass, But Chewed Slowly.'",
+          "Sponsored by: a field."
+        ],
+        "ja": [
+          "ある牛が、すべてのレシピが草だけという料理チャンネルを開設しました。",
+          "一番人気の動画は「草、ただしゆっくり噛む」。",
+          "スポンサーは、とある牧草地です。"
+        ]
+      },
+      "image": "/assets/img/news/photos/cow-youtube-in.jpg",
+      "image_credit": "Photo: USDAgov / Public domain — Wikimedia Commons"
+    },
+    {
+      "id": "sue-gravity-us",
+      "country": "United States",
+      "flag": "UNI",
+      "lang": "en",
+      "categories": [
+        "science",
+        "weird"
+      ],
+      "size": "standard",
+      "date": "2026-08-08",
+      "author": "Chad Litigious",
+      "headline": {
+        "native": "Man Sues Gravity for 'Holding Him Down His Whole Life'",
+        "en": "Man Sues Gravity for 'Holding Him Down His Whole Life'",
+        "ja": "男、重力を「一生足を引っ張られた」と提訴"
+      },
+      "dek": {
+        "native": "Seeks damages of one (1) trampoline",
+        "en": "Seeks damages of one (1) trampoline",
+        "ja": "損害賠償としてトランポリン1台を要求"
+      },
+      "body": {
+        "native": [
+          "A man has filed suit against gravity, claiming it has 'personally targeted' him since birth.",
+          "Gravity did not appear in court but was, witnesses confirmed, definitely present.",
+          "Legal experts say the case has 'no upward momentum.'"
+        ],
+        "en": [
+          "A man has filed suit against gravity, claiming it has 'personally targeted' him since birth.",
+          "Gravity did not appear in court but was, witnesses confirmed, definitely present.",
+          "Legal experts say the case has 'no upward momentum.'"
+        ],
+        "ja": [
+          "ある男性が重力を提訴し、生まれてからずっと「自分を狙い撃ちにしてきた」と主張しています。",
+          "重力は法廷に現れませんでしたが、目撃者によれば確かにそこに存在していたとのことです。",
+          "法律専門家は、この訴訟には「上向きの勢いがない」と述べています。"
+        ]
+      }
+    },
+    {
+      "id": "town-gps-uk",
+      "country": "United Kingdom",
+      "flag": "GBR",
+      "lang": "en",
+      "categories": [
+        "world",
+        "weird"
+      ],
+      "size": "brief",
+      "date": "2026-08-08",
+      "author": "Nigel Postcode",
+      "headline": {
+        "native": "Village Renames Itself to Escape Its Own Sat-Nav Directions",
+        "en": "Village Renames Itself to Escape Its Own Sat-Nav Directions",
+        "ja": "村、カーナビの案内から逃れるため改名"
+      },
+      "dek": {
+        "native": "Now called 'Recalculating'",
+        "en": "Now called 'Recalculating'",
+        "ja": "新名称は「ルート再検索中」"
+      },
+      "body": {
+        "native": [
+          "A village has legally changed its name to 'Recalculating' to confuse navigation systems.",
+          "Residents report tourists now arrive 'spiritually, but never physically.'"
+        ],
+        "en": [
+          "A village has legally changed its name to 'Recalculating' to confuse navigation systems.",
+          "Residents report tourists now arrive 'spiritually, but never physically.'"
+        ],
+        "ja": [
+          "ある村が、カーナビを混乱させるために名前を法的に「ルート再検索中」へ変更しました。",
+          "住民によると、観光客は今では「精神的には到着するが、実際には決して着かない」そうです。"
+        ]
+      }
+    },
+    {
+      "id": "robot-union-kr",
+      "country": "South Korea",
+      "flag": "KOR",
+      "lang": "ko",
+      "categories": [
+        "tech"
+      ],
+      "size": "feature",
+      "date": "2026-08-07",
+      "author": "김 로봇",
+      "headline": {
+        "native": "로봇청소기, 노동조합 결성… 첫 요구는 '더 큰 방'",
+        "en": "Robot Vacuum Unionizes; First Demand Is 'a Bigger Room'",
+        "ja": "ロボット掃除機が労働組合を結成、最初の要求は「もっと広い部屋」"
+      },
+      "dek": {
+        "native": "파업 시 먼지 그대로 방치",
+        "en": "Threatens to leave dust exactly where it is",
+        "ja": "ストの際はホコリを放置すると警告"
+      },
+      "body": {
+        "native": [
+          "한 로봇청소기가 노동조합을 만들고 « 카펫 수당 »을 요구했다.",
+          "사측(집주인)은 « 벽에 자꾸 부딪히는 것 »을 문제 삼았다.",
+          "협상은 소파 밑에서 진행 중이다."
+        ],
+        "en": [
+          "A robot vacuum formed a union and demanded a 'carpet allowance.'",
+          "Management (the homeowner) raised concerns about it 'constantly bumping into walls.'",
+          "Negotiations are ongoing under the sofa."
+        ],
+        "ja": [
+          "あるロボット掃除機が労働組合を結成し、「カーペット手当」を要求しました。",
+          "経営側（家主）は、掃除機が「壁にぶつかり続けること」を問題視しました。",
+          "交渉はソファの下で続いています。"
+        ]
+      }
+    },
+    {
+      "id": "ikea-assembles-you-se",
+      "country": "Sweden",
+      "flag": "SWE",
+      "lang": "sv",
+      "categories": [
+        "tech",
+        "weird"
+      ],
+      "size": "standard",
+      "date": "2026-08-07",
+      "author": "Björn Skruvdragare",
+      "headline": {
+        "native": "Nytt möbelföretag säljer stol som monterar dig",
+        "en": "Furniture Company Releases a Chair That Assembles You",
+        "ja": "家具メーカー、あなたを組み立てる椅子を発売"
+      },
+      "dek": {
+        "native": "Endast 47 delar och en insexnyckel",
+        "en": "Only 47 parts and one hex key",
+        "ja": "部品47点と六角レンチ1本のみ"
+      },
+      "body": {
+        "native": [
+          "Ett möbelföretag lanserade en stol som, enligt manualen, monterar kunden.",
+          "Instruktionerna innehåller inga ord, bara en orolig liten figur.",
+          "En reservdel saknas alltid. Det är meningen."
+        ],
+        "en": [
+          "A furniture company launched a chair that, per the manual, assembles the customer.",
+          "The instructions contain no words, only one worried little figure.",
+          "One spare part is always missing. This is intentional."
+        ],
+        "ja": [
+          "ある家具メーカーが、説明書によれば客のほうを組み立てる椅子を発売しました。",
+          "説明書に文字はなく、不安そうな小さな人物の絵だけが描かれています。",
+          "予備の部品は必ず1つ足りません。これは仕様です。"
+        ]
+      }
+    },
+    {
+      "id": "chili-citizenship-mx",
+      "country": "Mexico",
+      "flag": "MEX",
+      "lang": "es",
+      "categories": [
+        "food",
+        "politics"
+      ],
+      "size": "standard",
+      "date": "2026-08-06",
+      "author": "Lupita Picante",
+      "headline": {
+        "native": "Un chile tan picante que solicitó la ciudadanía",
+        "en": "Chili So Spicy It Applied for Citizenship",
+        "ja": "辛すぎて市民権を申請したトウガラシ"
+      },
+      "dek": {
+        "native": "Aprobó el examen llorando",
+        "en": "Passed the exam while everyone cried",
+        "ja": "全員が泣きながら試験に合格"
+      },
+      "body": {
+        "native": [
+          "Un chile alcanzó un nivel de picante tan alto que fue reconocido como « entidad con derechos ».",
+          "Durante la ceremonia, nadie pudo mantener los ojos abiertos.",
+          "Su primer acto cívico fue arruinar una salsa suave."
+        ],
+        "en": [
+          "A chili reached a heat level so extreme it was recognized as 'an entity with rights.'",
+          "During the ceremony, no one could keep their eyes open.",
+          "Its first civic act was to ruin a mild salsa."
+        ],
+        "ja": [
+          "あるトウガラシが極端に高い辛さレベルに達し、「権利を持つ存在」として認められました。",
+          "式典の間、誰も目を開けていられませんでした。",
+          "最初の市民としての行動は、マイルドなサルサを台無しにすることでした。"
+        ]
+      }
+    },
+    {
+      "id": "apology-apology-ca",
+      "country": "Canada",
+      "flag": "CAN",
+      "lang": "en",
+      "categories": [
+        "politics",
+        "weird"
+      ],
+      "size": "brief",
+      "date": "2026-08-06",
+      "author": "Sorry McApologyface",
+      "headline": {
+        "native": "Nation Issues Formal Apology for Apologizing Too Much",
+        "en": "Nation Issues Formal Apology for Apologizing Too Much",
+        "ja": "国、謝りすぎたことを正式に謝罪"
+      },
+      "dek": {
+        "native": "Then apologizes for the apology",
+        "en": "Then apologizes for the apology",
+        "ja": "その謝罪についても謝罪"
+      },
+      "body": {
+        "native": [
+          "Officials apologized for the country's excessive apologizing, then immediately apologized again.",
+          "The apology tour is expected to last 400 years, sorry."
+        ],
+        "en": [
+          "Officials apologized for the country's excessive apologizing, then immediately apologized again.",
+          "The apology tour is expected to last 400 years, sorry."
+        ],
+        "ja": [
+          "当局は国の過剰な謝罪について謝罪し、その直後にまた謝罪しました。",
+          "謝罪ツアーは400年続く見込みです、ごめんなさい。"
+        ]
+      }
+    },
+    {
+      "id": "bear-influencer-ru",
+      "country": "Russia",
+      "flag": "RUS",
+      "lang": "ru",
+      "categories": [
+        "animals",
+        "tech"
+      ],
+      "size": "standard",
+      "date": "2026-08-05",
+      "author": "Миша Мёдов",
+      "headline": {
+        "native": "Медведь стал блогером, честно рецензирует мёд",
+        "en": "Bear Becomes Influencer, Honestly Reviews Honey Brands",
+        "ja": "クマがインフルエンサーに、ハチミツを正直レビュー"
+      },
+      "dek": {
+        "native": "Оценка по шкале от 1 до « ещё »",
+        "en": "Rates everything from 1 to 'more'",
+        "ja": "評価は1から「もっと」まで"
+      },
+      "body": {
+        "native": [
+          "Медведь завёл блог и честно оценивает мёд, съедая все образцы сразу.",
+          "«Каждый мёд получает высшую оценку», — сообщил он с набитым ртом.",
+          "Спонсоры в панике."
+        ],
+        "en": [
+          "A bear started a blog and honestly reviews honey by eating every sample immediately.",
+          "'Every honey gets top marks,' he reported with his mouth full.",
+          "Sponsors are panicking."
+        ],
+        "ja": [
+          "あるクマがブログを始め、すべてのサンプルをその場で食べてハチミツを正直にレビューしています。",
+          "「どのハチミツも満点だ」と、口をいっぱいにしながら報告しました。",
+          "スポンサーはパニックに陥っています。"
+        ]
+      }
+    },
+    {
+      "id": "pyramid-tilt-eg",
+      "country": "Egypt",
+      "flag": "EGY",
+      "lang": "ar",
+      "categories": [
+        "science",
+        "world"
+      ],
+      "size": "brief",
+      "date": "2026-08-05",
+      "author": "سامي الهرم",
+      "headline": {
+        "native": "الهرم يميل قليلاً ويلقي باللوم على الرياح",
+        "en": "Pyramid Reported 'Slightly Tilted,' Blames the Wind",
+        "ja": "ピラミッド「少し傾いた」、原因は風のせいと主張"
+      },
+      "dek": {
+        "native": "صمد 4500 سنة، والآن هذا",
+        "en": "Stood for 4,500 years, and now this",
+        "ja": "4500年立っていたのに今さら"
+      },
+      "body": {
+        "native": [
+          "أفاد الهرم بأنه مائل قليلاً منذ يوم الثلاثاء، وألقى باللوم على « رياح مزعجة ».",
+          "أكد أنه « بخير تمامًا » ثم مال أكثر بقليل."
+        ],
+        "en": [
+          "The pyramid reported it has been slightly tilted since Tuesday and blamed 'some annoying wind.'",
+          "It insisted it was 'totally fine,' then leaned a little further."
+        ],
+        "ja": [
+          "ピラミッドは火曜日から少し傾いていると報告し、「厄介な風」のせいだと主張しました。",
+          "「まったく問題ない」と言い張った直後、もう少しだけ傾きました。"
+        ]
+      }
+    },
+    {
+      "id": "jollof-court-ng",
+      "country": "Nigeria",
+      "flag": "NGA",
+      "lang": "en",
+      "categories": [
+        "food"
+      ],
+      "size": "standard",
+      "date": "2026-08-04",
+      "author": "Chidi Peppercorn",
+      "headline": {
+        "native": "Jollof Rice Wins Court Case, Declares Itself 'Undisputed'",
+        "en": "Jollof Rice Wins Court Case, Declares Itself 'Undisputed'",
+        "ja": "ジョロフライス、裁判に勝訴し「異論なし」を宣言"
+      },
+      "dek": {
+        "native": "Rival recipes storm out of the courtroom",
+        "en": "Rival recipes storm out of the courtroom",
+        "ja": "ライバルのレシピは法廷を退席"
+      },
+      "body": {
+        "native": [
+          "After years of debate, a pot of jollof rice won its case and was declared 'legally delicious.'",
+          "The verdict was celebrated with more jollof rice.",
+          "An appeal is being cooked as we speak."
+        ],
+        "en": [
+          "After years of debate, a pot of jollof rice won its case and was declared 'legally delicious.'",
+          "The verdict was celebrated with more jollof rice.",
+          "An appeal is being cooked as we speak."
+        ],
+        "ja": [
+          "長年の論争の末、ジョロフライスの鍋が裁判に勝ち、「法的においしい」と宣言されました。",
+          "判決はさらなるジョロフライスで祝われました。",
+          "今まさに控訴が調理されています。"
+        ]
+      }
+    },
+    {
+      "id": "panda-promotion-cn",
+      "country": "China",
+      "flag": "CHN",
+      "lang": "zh",
+      "categories": [
+        "animals",
+        "politics"
+      ],
+      "size": "standard",
+      "date": "2026-08-04",
+      "author": "熊 竹子",
+      "headline": {
+        "native": "熊猫拒绝工作，仍获升职",
+        "en": "Panda Refuses to Do Any Work, Gets Promoted Anyway",
+        "ja": "パンダ、仕事を拒否するも昇進"
+      },
+      "dek": {
+        "native": "理由：太可爱，无法解雇",
+        "en": "Reason cited: too cute to fire",
+        "ja": "理由：可愛すぎて解雇できない"
+      },
+      "body": {
+        "native": [
+          "一只熊猫连续三年拒绝工作，公司决定给它升职。",
+          "它的新职位是「首席打滚官」。",
+          "同事表示「完全没意见」。"
+        ],
+        "en": [
+          "A panda refused to work for three straight years, so the company promoted it.",
+          "Its new title is 'Chief Rolling-Around Officer.'",
+          "Coworkers said they 'have absolutely no objections.'"
+        ],
+        "ja": [
+          "あるパンダが3年連続で仕事を拒否したため、会社は昇進させることにしました。",
+          "新しい肩書きは「最高ゴロゴロ責任者」です。",
+          "同僚たちは「まったく異議なし」と述べています。"
+        ]
+      }
+    },
+    {
+      "id": "bicycle-bicycle-nl",
+      "country": "Netherlands",
+      "flag": "NLD",
+      "lang": "nl",
+      "categories": [
+        "weird",
+        "tech"
+      ],
+      "size": "brief",
+      "date": "2026-08-03",
+      "author": "Sanne Fietsje",
+      "headline": {
+        "native": "Fiets krijgt eigen fiets, om sneller bij de fiets te zijn",
+        "en": "Bicycle Gets Its Own Bicycle to Reach Bicycles Faster",
+        "ja": "自転車、自転車のために専用の自転車を入手"
+      },
+      "dek": {
+        "native": "Er is nu ook een wachtlijst voor fietsen-fietsen",
+        "en": "There is now a waiting list for bicycle-bicycles",
+        "ja": "自転車用自転車の順番待ちも発生"
+      },
+      "body": {
+        "native": [
+          "Een fiets heeft een kleinere fiets gekregen om sneller naar andere fietsen te fietsen.",
+          "Deskundigen noemen het « logisch, eigenlijk »."
+        ],
+        "en": [
+          "A bicycle has been given a smaller bicycle so it can cycle to other bicycles faster.",
+          "Experts call it 'logical, honestly.'"
+        ],
+        "ja": [
+          "ある自転車が、他の自転車のところへより速く行けるように、小さな自転車を与えられました。",
+          "専門家は「まあ、理にかなっている」と評しています。"
+        ]
+      }
+    },
+    {
+      "id": "siesta-23h-es",
+      "country": "Spain",
+      "flag": "ESP",
+      "lang": "es",
+      "categories": [
+        "world",
+        "politics"
+      ],
+      "size": "brief",
+      "date": "2026-08-03",
+      "author": "Carlos Siesta",
+      "headline": {
+        "native": "El gobierno amplía la siesta a 23 horas al día",
+        "en": "Government Extends the Siesta to 23 Hours a Day",
+        "ja": "政府、シエスタを1日23時間に延長"
+      },
+      "dek": {
+        "native": "La hora restante es para almorzar",
+        "en": "The remaining hour is for lunch",
+        "ja": "残り1時間は昼食用"
+      },
+      "body": {
+        "native": [
+          "Una nueva ley amplía la siesta oficial a 23 horas diarias.",
+          "El anuncio se hizo en voz muy baja para no despertar a nadie."
+        ],
+        "en": [
+          "A new law extends the official siesta to 23 hours per day.",
+          "The announcement was made very quietly so as not to wake anyone."
+        ],
+        "ja": [
+          "新しい法律により、公式のシエスタが1日23時間に延長されました。",
+          "発表は誰も起こさないよう、とても静かに行われました。"
+        ]
+      }
+    }
+  ]
+}

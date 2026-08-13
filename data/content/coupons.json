@@ -1,0 +1,203 @@
+{
+  "_note": "rarity affects the ghost's excitement + visual treatment: common | rare | legendary. unlock: open (always visible) | konami | mascot-clicks | hidden-spot | secret-url | meme-42 | meme-67 | meme-1337. redeem generates a fake barcode + confetti.",
+  "coupons": [
+    {
+      "id": "free-article",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "One (1) Free News Article",
+      "title_ja": "無料ニュース記事1本",
+      "desc_en": "Redeemable at this very website. You may already be using it. Congratulations.",
+      "desc_ja": "この website で使えます。もう使っているかもしれません。おめでとう。",
+      "fine_print_en": "Non-transferable. Also non-real.",
+      "fine_print_ja": "譲渡不可。実在もしません。"
+    },
+    {
+      "id": "imaginary-sandwich",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "Free Sandwich at Baka Deli",
+      "title_ja": "バカ・デリの無料サンドイッチ",
+      "desc_en": "Redeem for one imaginary sandwich. Must bring your own imaginary appetite.",
+      "desc_ja": "架空のサンドイッチ1個と交換。架空の食欲をご持参ください。",
+      "fine_print_en": "Bread not included. Neither is the deli.",
+      "fine_print_ja": "パンは含まれません。デリも存在しません。"
+    },
+    {
+      "id": "thirsty-ghost-drink",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "Free Drink at The Thirsty Ghost",
+      "title_ja": "サースティ・ゴーストの無料ドリンク",
+      "desc_en": "The drink is not included, but the thirst absolutely is.",
+      "desc_ja": "ドリンクは付きませんが、渇きはしっかり付いてきます。",
+      "fine_print_en": "Ghosts drink first.",
+      "fine_print_ja": "幽霊が先に飲みます。"
+    },
+    {
+      "id": "existential-50",
+      "rarity": "rare",
+      "unlock": "open",
+      "title_en": "50% Off Your Next Existential Crisis",
+      "title_ja": "次の実存的危機が50%オフ",
+      "desc_en": "Feel half as lost for a limited time. The void appreciates your business.",
+      "desc_ja": "期間限定で、迷いが半分に。虚無があなたのご利用に感謝します。",
+      "fine_print_en": "Crisis may still occur at full intensity. Refunds handled by the abyss.",
+      "fine_print_ja": "危機は全力で発生する場合があります。返金は深淵が対応します。"
+    },
+    {
+      "id": "buy-zero",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "Buy 0, Get 0 Free",
+      "title_ja": "0個買うと0個無料",
+      "desc_en": "Our best deal yet. Truly unbeatable value.",
+      "desc_ja": "史上最高のお得。まさに無敵の価値。",
+      "fine_print_en": "Limit 0 per customer.",
+      "fine_print_ja": "お一人様0個まで。"
+    },
+    {
+      "id": "mascot-compliment",
+      "rarity": "rare",
+      "unlock": "mascot-clicks",
+      "title_en": "One Compliment From the Ghost",
+      "title_ja": "おばけからの褒め言葉1回",
+      "desc_en": "Bakabake thinks you have very impressive posture today. Truly.",
+      "desc_ja": "バカバケは、今日のあなたの姿勢が実に立派だと思っています。本当に。",
+      "fine_print_en": "Compliment sincerity: 88%.",
+      "fine_print_ja": "褒め言葉の本気度：88%。"
+    },
+    {
+      "id": "wifi-password",
+      "rarity": "common",
+      "unlock": "hidden-spot",
+      "title_en": "Free WiFi Password",
+      "title_ja": "無料WiFiパスワード",
+      "desc_en": "The password is: password. You're welcome. Enjoy the internet responsibly.",
+      "desc_ja": "パスワードは「password」です。どういたしまして。責任を持ってネットをお楽しみください。",
+      "fine_print_en": "Network name: 'definitely_not_a_trap'.",
+      "fine_print_ja": "ネットワーク名：『definitely_not_a_trap』。"
+    },
+    {
+      "id": "coupon-coupon",
+      "rarity": "rare",
+      "unlock": "open",
+      "title_en": "A Coupon for a Coupon",
+      "title_ja": "クーポンと交換できるクーポン",
+      "desc_en": "Redeem this coupon to receive a different coupon of equal or lesser realness.",
+      "desc_ja": "このクーポンを使うと、同等以下のリアルさの別のクーポンがもらえます。",
+      "fine_print_en": "Recursion not covered by warranty.",
+      "fine_print_ja": "無限ループは保証対象外です。"
+    },
+    {
+      "id": "virtual-highfive",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "One Virtual High-Five",
+      "title_ja": "バーチャルハイタッチ1回",
+      "desc_en": "Raise your hand to the screen. There. Nailed it. Great teamwork.",
+      "desc_ja": "画面に手を上げてください。はい。ナイス。最高のチームワーク。",
+      "fine_print_en": "Screen smudges not our responsibility.",
+      "fine_print_ja": "画面の指紋は当方の責任ではありません。"
+    },
+    {
+      "id": "ghost-sighting",
+      "rarity": "legendary",
+      "unlock": "konami",
+      "title_en": "One Guaranteed Ghost Sighting",
+      "title_ja": "確実な幽霊目撃1回",
+      "desc_en": "Look behind you. ... Okay, maybe next time. The ghost is shy but real. Probably.",
+      "desc_ja": "後ろを振り返ってください。……まあ、また今度。おばけは恥ずかしがり屋ですが実在します。たぶん。",
+      "fine_print_en": "Sighting may be a coat on a chair.",
+      "fine_print_ja": "目撃対象は椅子にかけた上着かもしれません。"
+    },
+    {
+      "id": "moon-10",
+      "rarity": "rare",
+      "unlock": "open",
+      "title_en": "10% Off the Moon",
+      "title_ja": "月が10%オフ",
+      "desc_en": "Limited stock: there is one moon. Act now, or possibly whenever.",
+      "desc_ja": "在庫限定：月は1個です。今すぐ、あるいはいつでもどうぞ。",
+      "fine_print_en": "Delivery not available. It is the moon.",
+      "fine_print_ja": "配送不可。月なので。"
+    },
+    {
+      "id": "imaginary-parking",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "Free Parking for Your Imaginary Car",
+      "title_ja": "架空の車の無料駐車",
+      "desc_en": "Park your imaginary car in our imaginary lot, in the good imaginary spot near the door.",
+      "desc_ja": "架空の車を、架空の駐車場の、入口近くの良い架空のスペースに停められます。",
+      "fine_print_en": "Real cars will be imaginarily towed.",
+      "fine_print_ja": "実在の車は架空にレッカー移動されます。"
+    },
+    {
+      "id": "told-you-so",
+      "rarity": "rare",
+      "unlock": "open",
+      "title_en": "One Free 'I Told You So'",
+      "title_ja": "無料の「だから言ったのに」1回",
+      "desc_en": "Redeem next time you are proven right. Savor it. You earned this.",
+      "desc_ja": "次にあなたが正しかったと証明されたときに使えます。じっくり味わって。当然の報いです。",
+      "fine_print_en": "Being right not guaranteed.",
+      "fine_print_ja": "正しさは保証されません。"
+    },
+    {
+      "id": "self-pat",
+      "rarity": "common",
+      "unlock": "open",
+      "title_en": "A Pat on the Back (Self-Service)",
+      "title_ja": "背中ポンポン（セルフサービス）",
+      "desc_en": "Reach around and pat. You are doing better than you think. Yes, you.",
+      "desc_ja": "手を回してポンポンしてください。思っているより頑張っています。そう、あなたが。",
+      "fine_print_en": "Consult a doctor if you cannot reach.",
+      "fine_print_ja": "届かない場合は医師にご相談を。"
+    },
+    {
+      "id": "dial-up-nostalgia",
+      "rarity": "legendary",
+      "unlock": "secret-url",
+      "title_en": "The Legendary Dial-Up Sound",
+      "title_ja": "伝説のダイヤルアップ音",
+      "desc_en": "Unlocked! You found the secret. Screeeee-krrrshhh-bing-bong. Ah, the good old days.",
+      "desc_ja": "解除！秘密を見つけましたね。ピーヒョロロ…ガガガ…。ああ、古き良き時代。",
+      "fine_print_en": "Do not pick up the phone while browsing.",
+      "fine_print_ja": "ネット中は電話を取らないでください。"
+    },
+    {
+      "id": "meme-42",
+      "rarity": "legendary",
+      "unlock": "meme-42",
+      "title_en": "42% Off Everything (The Answer)",
+      "title_ja": "全品42%オフ（答え）",
+      "desc_en": "The Answer to Life, the Universe, and Everything is now also a discount. Don't panic.",
+      "desc_ja": "生命、宇宙、そして万物の答えが、いまや割引にもなりました。あわてないで。",
+      "fine_print_en": "Bring your own towel.",
+      "fine_print_ja": "タオルはご持参ください。"
+    },
+    {
+      "id": "meme-67",
+      "rarity": "rare",
+      "unlock": "meme-67",
+      "title_en": "Coupon 6, See Coupon 7",
+      "title_ja": "クーポン6、クーポン7を参照",
+      "desc_en": "Six. Seven. That's the whole coupon. Doot doot.",
+      "desc_ja": "6。7。それがクーポンの全部です。ドゥドゥ。",
+      "fine_print_en": "Not valid with coupons 1 through 5.",
+      "fine_print_ja": "クーポン1〜5とは併用不可。"
+    },
+    {
+      "id": "meme-1337",
+      "rarity": "legendary",
+      "unlock": "meme-1337",
+      "title_en": "1337 Bonus Pixels",
+      "title_ja": "ボーナス1337ピクセル",
+      "desc_en": "Access granted. You are now certified ELITE. Please hack responsibly.",
+      "desc_ja": "アクセス許可。あなたは公認のエリートです。責任を持ってハックを。",
+      "fine_print_en": "Pixels non-refundable.",
+      "fine_print_ja": "ピクセルは返品不可。"
+    }
+  ]
+}

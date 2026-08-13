@@ -1,0 +1,19 @@
+# Render blueprint. Push this repo, then "New +" -> "Blueprint" and pick it.
+services:
+  - type: web
+    name: baka-news
+    runtime: docker
+    plan: free                 # upgrade to 'starter' if you attach a disk (below)
+    autoDeploy: true
+    envVars:
+      - key: BAKA_DB_PATH
+        value: /app/data/db/baka.sqlite
+      - key: BAKA_STORAGE
+        value: /app/storage
+    # --- OPTIONAL: persist the guestbook / counter across deploys ---
+    # The free plan has an EPHEMERAL disk (data resets on each deploy/restart),
+    # which is fine for a joke site. To keep data, upgrade the plan and uncomment:
+    # disk:
+    #   name: baka-data
+    #   mountPath: /app/data/db
+    #   sizeGB: 1

@@ -1,0 +1,88 @@
+{
+  "horoscopes": [
+    {
+      "sign": "aries",
+      "name_en": "Aries",
+      "name_ja": "おひつじ座",
+      "en": "A stranger will compliment your posture. It will haunt you for weeks. Lucky object: a slightly warm doorknob.",
+      "ja": "見知らぬ人があなたの姿勢をほめます。数週間気になります。ラッキーアイテム：少し温かいドアノブ。"
+    },
+    {
+      "sign": "taurus",
+      "name_en": "Taurus",
+      "name_ja": "おうし座",
+      "en": "The snack you are thinking about is thinking about you too. Meet in the middle (the kitchen). Lucky number: enough.",
+      "ja": "あなたが考えているおやつも、あなたのことを考えています。中間地点（台所）で会いましょう。ラッキーナンバー：じゅうぶん。"
+    },
+    {
+      "sign": "gemini",
+      "name_en": "Gemini",
+      "name_ja": "ふたご座",
+      "en": "You will win an argument you are having only in your head. Do not gloat. Lucky sound: a distant door.",
+      "ja": "頭の中だけで交わしている口論に勝ちます。得意にならないこと。ラッキーな音：遠くのドア。"
+    },
+    {
+      "sign": "cancer",
+      "name_en": "Cancer",
+      "name_ja": "かに座",
+      "en": "A houseplant believes in you. Do not let it down. Water it, or at least wave. Lucky direction: slightly left.",
+      "ja": "観葉植物があなたを信じています。がっかりさせないで。水をやるか、せめて手を振って。ラッキーな方角：少し左。"
+    },
+    {
+      "sign": "leo",
+      "name_en": "Leo",
+      "name_ja": "しし座",
+      "en": "Today you are 4% more magnificent. Nobody will mention it, but they feel it. Lucky texture: velvet.",
+      "ja": "今日のあなたは4%増しで壮麗です。誰も口にしませんが、みんな感じています。ラッキーな手触り：ベルベット。"
+    },
+    {
+      "sign": "virgo",
+      "name_en": "Virgo",
+      "name_ja": "おとめ座",
+      "en": "You will alphabetize something that did not need it. This is correct and good. Lucky task: a small tidy.",
+      "ja": "必要のないものをアルファベット順に並べます。これは正しく、良いことです。ラッキーな作業：ちょっとした片付け。"
+    },
+    {
+      "sign": "libra",
+      "name_en": "Libra",
+      "name_ja": "てんびん座",
+      "en": "A difficult decision resolves itself if you ignore it long enough. The stars endorse procrastination today only.",
+      "ja": "難しい決断は、十分に無視すれば勝手に片づきます。星は本日限り、先延ばしを支持します。"
+    },
+    {
+      "sign": "scorpio",
+      "name_en": "Scorpio",
+      "name_ja": "さそり座",
+      "en": "You know a secret. It is that you are tired. Take a nap of mysterious intensity. Lucky hour: whenever.",
+      "ja": "あなたは秘密を知っています。それは「疲れている」ということ。謎めいた深さの昼寝を。ラッキーな時間：いつでも。"
+    },
+    {
+      "sign": "sagittarius",
+      "name_en": "Sagittarius",
+      "name_ja": "いて座",
+      "en": "Adventure calls, but it is a wrong number. Still, answer politely. Lucky mode of travel: enthusiastic wandering.",
+      "ja": "冒険が呼んでいますが、間違い電話です。それでも丁寧に応対を。ラッキーな移動手段：元気なさまよい歩き。"
+    },
+    {
+      "sign": "capricorn",
+      "name_en": "Capricorn",
+      "name_ja": "やぎ座",
+      "en": "Your to-do list fears you. Good. Do one thing on it and let the rest tremble. Lucky supply: a fresh pen.",
+      "ja": "あなたのToDoリストはあなたを恐れています。よろしい。ひとつ片づけて、残りは震えさせておきましょう。ラッキーな道具：新しいペン。"
+    },
+    {
+      "sign": "aquarius",
+      "name_en": "Aquarius",
+      "name_ja": "みずがめ座",
+      "en": "A weird idea you had in the shower is, in fact, brilliant. Also, you left the water running. Lucky element: steam.",
+      "ja": "シャワー中に浮かんだ奇妙なアイデアは、実は素晴らしい。ついでに水を出しっぱなしです。ラッキーな元素：湯気。"
+    },
+    {
+      "sign": "pisces",
+      "name_en": "Pisces",
+      "name_ja": "うお座",
+      "en": "You will make eye contact with a fish and understand everything, briefly. Lucky beverage: water, but fancy.",
+      "ja": "魚と目が合い、一瞬すべてを理解します。ラッキーな飲み物：水、ただしおしゃれなやつ。"
+    }
+  ]
+}

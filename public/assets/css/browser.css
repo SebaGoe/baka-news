@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Browser chrome — the whole site sits inside a Netscape Navigator window.
+   Silver chrome + navy title bar (classic 90s), high-contrast throughout.
+   ========================================================================== */
+
+:root {
+  --chrome-face: #cdd0d5;
+  --chrome-hi:   #ffffff;
+  --chrome-lo:   #7f8288;
+  --chrome-ink:  #17171b;
+  --title-bg:    #14237a;   /* white text = ~12:1 */
+  --title-ink:   #ffffff;
+}
+
+.browser {
+  max-width: 1220px;
+  margin: 0 auto;
+  background: var(--chrome-face);
+  border: 2px solid;
+  border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi);
+  box-shadow: 6px 6px 0 rgba(0,0,0,.4);
+  color: var(--chrome-ink);
+}
+@media (min-width: 780px) { .browser { margin: 14px auto; } }
+
+/* ---- Title bar ---- */
+.browser__titlebar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--title-bg); color: var(--title-ink);
+  font-family: var(--font-retro); font-weight: 600; font-size: .95rem;
+  padding: .25rem .4rem; gap: .5rem;
+}
+.browser__title { display: inline-flex; align-items: center; gap: .45rem; min-width: 0; }
+.browser__title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.browser__logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.3rem; height: 1.3rem; background: var(--chrome-hi); color: var(--title-bg);
+  font-family: var(--font-display); font-weight: 900; font-style: italic; border-radius: 2px;
+}
+.browser__winbtns { display: inline-flex; gap: .25rem; flex: none; }
+.winbtn {
+  width: 20px; height: 18px; background: var(--chrome-face); cursor: pointer; padding: 0;
+  border: 1px solid; border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--chrome-ink); font-family: var(--font-retro); font-size: .9rem; line-height: 1;
+}
+.winbtn:active { border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); }
+.winbtn--min { align-items: flex-end; padding-bottom: 3px; }
+.winbtn--min::after { content: ""; width: 9px; height: 2px; background: var(--chrome-ink); }
+.winbtn--max::after { content: ""; width: 10px; height: 9px; border: 1px solid var(--chrome-ink); border-top-width: 2px; }
+.browser.is-maxed .winbtn--max::after { /* becomes a "restore" (overlapping windows) glyph */
+  width: 8px; height: 7px; box-shadow: 3px -3px 0 -1px var(--chrome-face), 3px -3px 0 0 var(--chrome-ink);
+}
+
+/* ---- Window states ---- */
+.browser { transition: max-width .18s ease, width .18s ease, margin .18s ease; }
+.browser.is-maxed { max-width: none; margin: 0; }
+.browser.is-mini {
+  max-width: 340px; width: 340px; margin: 14px auto 14px 14px;
+}
+.browser.is-mini .browser__menubar,
+.browser.is-mini .browser__toolbar,
+.browser.is-mini .browser__location,
+.browser.is-mini .browser__viewport,
+.browser.is-mini .browser__status { display: none !important; }
+.browser.is-mini .browser__titlebar { cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .browser { transition: none; } }
+
+/* When minimized, float the window above the fake virus ad behind it */
+body.is-min .browser { position: relative; z-index: 2; }
+
+/* ---- Fake "DANGER STUPID VIRUS" ad (only visible while minimized) ---- */
+.virus-ad { display: none; }
+body.is-min .virus-ad {
+  display: flex; align-items: center; justify-content: center;
+  position: fixed; inset: 0; z-index: 1; cursor: pointer; padding: 1rem;
+  background:
+    repeating-linear-gradient(45deg, #1a1a1a 0 22px, #2a2a2a 22px 44px);
+}
+.virus-ad__box {
+  max-width: 460px; text-align: center; color: #10160f;
+  background: #b6ff3a; border: 6px ridge #ffe600;
+  box-shadow: 0 0 0 6px #d3352c, 10px 10px 0 rgba(0,0,0,.5);
+  padding: 1.2rem 1.4rem; font-family: var(--font-retro);
+  animation: virus-pulse 1.4s ease-in-out infinite;
+}
+@keyframes virus-pulse { 50% { transform: scale(1.03) rotate(-.5deg); } }
+.virus-ad__warn { font-size: 1.6rem; font-weight: 800; color: #d3352c; letter-spacing: 3px; margin: 0 0 .3rem; }
+.virus-ad__big { font-family: var(--font-display); font-weight: 900; font-size: 2.1rem; line-height: 1; margin: .2rem 0 .5rem; color: #10160f; }
+.virus-ad__sub { font-size: .82rem; color: #23301c; margin: .4rem 0 .7rem; line-height: 1.4; }
+.virus-ad__cta { font-weight: 700; color: #14237a; background: #fff; display: inline-block; padding: .3rem .6rem; border: 2px solid #10160f; }
+@media (prefers-reduced-motion: reduce) { .virus-ad__box { animation: none; } }
+
+/* ---- Squash-the-Virus mini-game (inside the modal) ---- */
+.virusgame { margin-top: .6rem; }
+.virusgame__hud { font-family: var(--font-retro); text-align: center; margin-bottom: .5rem; }
+.virusgame__stage {
+  position: relative; height: 220px; overflow: hidden;
+  background: var(--paper-2); border: 2px inset #2a2a2a;
+}
+.virusgame__bug {
+  position: absolute; left: 20px; top: 20px; width: 46px; height: 46px; padding: 0;
+  cursor: pointer; font-family: var(--font-retro); font-weight: 700; color: #fff;
+  background: radial-gradient(circle at 35% 30%, #b6ff3a, #5a8f1f);
+  border: 2px solid #10160f; border-radius: 50%;
+  transition: left .09s linear, top .09s linear;
+}
+.virusgame__bug:active { transform: scale(.9); }
+
+/* ---- Menu bar ---- */
+.browser__menubar {
+  display: flex; gap: .1rem; padding: .1rem .3rem;
+  border-top: 1px solid var(--chrome-hi); border-bottom: 1px solid var(--chrome-lo);
+  position: relative;
+}
+.menu {
+  font: inherit; font-family: var(--font-body); font-size: .9rem;
+  background: none; border: 1px solid transparent; color: var(--chrome-ink);
+  padding: .1rem .5rem; cursor: pointer;
+}
+.menu:hover, .menu[aria-expanded="true"] { background: var(--title-bg); color: #fff; }
+.menu u { text-underline-offset: 2px; }
+.browser__menu-panel {
+  position: absolute; top: 100%; z-index: 40; min-width: 200px;
+  background: var(--chrome-face); color: var(--chrome-ink);
+  border: 2px solid; border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi);
+  box-shadow: 3px 3px 0 rgba(0,0,0,.35); padding: .2rem; font-family: var(--font-body);
+}
+.browser__menu-panel a, .browser__menu-panel button {
+  display: block; width: 100%; text-align: left; text-decoration: none;
+  color: var(--chrome-ink); background: none; border: 0; font: inherit; font-size: .9rem;
+  padding: .25rem .5rem; cursor: pointer;
+}
+.browser__menu-panel a:hover, .browser__menu-panel button:hover { background: var(--title-bg); color: #fff; }
+.browser__menu-panel hr { border: 0; border-top: 1px solid var(--chrome-lo); margin: .2rem 0; }
+.browser__menu-panel .is-disabled { color: #6a6d73; cursor: default; }
+.browser__menu-panel .is-disabled:hover { background: none; color: #6a6d73; }
+
+/* ---- Toolbar ---- */
+.browser__toolbar {
+  display: flex; align-items: center; gap: .3rem; flex-wrap: wrap;
+  padding: .35rem .4rem; border-bottom: 1px solid var(--chrome-lo);
+}
+.tbtn {
+  font-family: var(--font-body); font-size: .85rem; cursor: pointer; text-decoration: none;
+  color: var(--chrome-ink); background: var(--chrome-face);
+  border: 2px solid; border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi);
+  padding: .15rem .55rem; display: inline-flex; align-items: center; gap: .3rem; line-height: 1;
+}
+.tbtn:visited { color: var(--chrome-ink); }
+.tbtn:active { border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo); }
+.tbtn:disabled { color: #8b8e94; cursor: default; }
+.tbtn__i { font-size: 1rem; }
+.tbtn--stop { color: var(--red); }
+.browser__throbber {
+  margin-left: auto; width: 30px; height: 30px; flex: none;
+  background: var(--title-bg); border: 2px solid;
+  border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.throbber__n {
+  font-family: var(--font-display); font-weight: 900; font-style: italic; color: #fff; font-size: 1.1rem;
+}
+.browser__throbber.is-loading .throbber__n { animation: throb .7s linear infinite; }
+@keyframes throb { 0%{transform:scale(1);opacity:1} 50%{transform:scale(1.35);opacity:.55} 100%{transform:scale(1);opacity:1} }
+
+/* ---- Location / address bar ---- */
+.browser__location {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .3rem .4rem; border-bottom: 2px solid var(--chrome-lo);
+}
+.browser__loclabel { font-family: var(--font-body); font-size: .85rem; flex: none; }
+.browser__location input {
+  flex: 1 1 auto; min-width: 0; font: inherit; font-size: .85rem; padding: .2rem .4rem;
+  background: #fff; color: var(--ink);
+  border: 2px solid; border-color: var(--chrome-lo) var(--chrome-hi) var(--chrome-hi) var(--chrome-lo);
+}
+.browser__go {
+  flex: none; font-family: var(--font-body); font-size: .85rem; cursor: pointer;
+  background: var(--chrome-face); color: var(--chrome-ink);
+  border: 2px solid; border-color: var(--chrome-hi) var(--chrome-lo) var(--chrome-lo) var(--chrome-hi);
+  padding: .2rem .7rem;
+}
+
+/* ---- Viewport (the newspaper lives here) ---- */
+.browser__viewport { background: var(--teal); padding: 0; }
+.browser .page-frame { max-width: none; margin: 0; border: 0; box-shadow: none; }
+@media (min-width: 780px) { .browser .page-frame { margin: 0; } }
+
+/* ---- Status bar ---- */
+.browser__status {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .2rem .5rem; border-top: 1px solid var(--chrome-hi);
+  font-family: var(--font-body); font-size: .8rem;
+}
+.browser__lock {
+  font-family: var(--font-retro); font-size: .65rem; letter-spacing: .05em;
+  border: 1px solid var(--chrome-lo); padding: 0 .25rem; background: #dfe8cf; color: #24421f;
+}
+.browser__status-text { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--chrome-ink); }
+.browser__progress { flex: none; width: 120px; height: 12px; border: 1px solid var(--chrome-lo); background: #fff; overflow: hidden; }
+.browser__progress::before {
+  content: ""; display: block; height: 100%; width: 100%;
+  background: repeating-linear-gradient(90deg, var(--title-bg) 0 8px, #2f3f9e 8px 12px);
+  transform: translateX(-100%);
+}
+.browser__progress.is-loading::before { animation: fillbar 1s ease-out forwards; }
+@keyframes fillbar { to { transform: translateX(0); } }
+
+/* Compact chrome on small screens: keep essentials. */
+@media (max-width: 620px) {
+  .browser__menubar { flex-wrap: wrap; }
+  #nav-fwd, #nav-reload, #nav-print, #nav-stop, .browser__throbber { display: none; }
+}
+
+/* ==========================================================================
+   ARCADE — Whack-a-Ghost mini-game
+   ========================================================================== */
+.arcade { max-width: 680px; margin: 0 auto; }
+.arcade__hud {
+  display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: center;
+  font-family: var(--font-retro); margin: .6rem 0 1rem;
+}
+.arcade__stat { background: #06120a; color: #39ff5f; border: 2px inset #2a2a2a; padding: .2rem .6rem; }
+.arcade__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem;
+  max-width: 420px; margin: 0 auto;
+}
+.hole {
+  position: relative; aspect-ratio: 1 / 1; background: var(--paper-2);
+  border: 2px solid; border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+  overflow: hidden; cursor: pointer; padding: 0;
+}
+.hole::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: 6%; height: 22%; background: rgba(0,0,0,.14); border-radius: 50%; }
+.hole__ghost {
+  position: absolute; left: 15%; width: 70%; bottom: 6%;
+  transform: translateY(125%); transition: transform .12s ease-out; pointer-events: none;
+}
+.hole.is-up .hole__ghost { transform: translateY(0); }
+.hole.is-bonk .hole__ghost { transform: translateY(0) scale(.88) rotate(6deg); filter: saturate(0); }
+.hole:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.arcade__actions { text-align: center; margin: 1.2rem 0; display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; }
+.arcade__msg { text-align: center; font-family: var(--font-type); color: var(--ink-soft); min-height: 1.4em; }
+.arcade__help { max-width: 480px; margin: 1rem auto; font-family: var(--font-type); font-size: var(--fs-small); color: var(--ink-soft); }
+
+/* Game selector tabs */
+.arcade__tabs { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; margin: .8rem 0 1.2rem; }
+.arcade__tab {
+  font-family: var(--font-retro); font-size: .9rem; cursor: pointer;
+  background: var(--chrome); color: var(--ink); padding: .35rem .8rem;
+  border: 2px solid; border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+}
+.arcade__tab.is-active { background: var(--title-bg); color: #fff; border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark); }
+.arcade__tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.arcade__game { display: none; }
+.arcade__game.is-active { display: block; }
+.btn-retro--sm { padding: .1rem .5rem; font-size: .8rem; }
+
+/* Ghost Snake */
+.arcade__canvas {
+  display: block; margin: 0 auto; image-rendering: pixelated;
+  background: var(--paper-2); max-width: 100%; height: auto;
+  border: 3px solid; border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+}
+.dpad { width: 168px; margin: 1rem auto 0; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 6px; }
+.dpad__btn {
+  font-size: 1.2rem; line-height: 1; cursor: pointer; padding: .5rem 0; background: var(--chrome);
+  border: 2px solid; border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+}
+.dpad__btn:active { border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark); }
+.dpad__up { grid-column: 2; grid-row: 1; } .dpad__left { grid-column: 1; grid-row: 2; }
+.dpad__right { grid-column: 3; grid-row: 2; } .dpad__down { grid-column: 2; grid-row: 3; }
+
+/* Baka-sweeper */
+.minesweeper {
+  display: grid; grid-template-columns: repeat(var(--n, 9), 1fr); gap: 2px;
+  width: min(360px, 92vw); margin: 0 auto; padding: 4px; background: var(--control-line);
+  border: 3px solid; border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+}
+.mine {
+  aspect-ratio: 1 / 1; cursor: pointer; padding: 0; font-family: var(--font-retro);
+  font-weight: 700; font-size: clamp(.7rem, 2.6vw, 1rem); color: var(--ink);
+  background: var(--chrome);
+  border: 2px solid; border-color: var(--bevel-light) var(--bevel-dark) var(--bevel-dark) var(--bevel-light);
+}
+.mine.is-open { background: var(--paper); border: 1px solid var(--hairline); cursor: default; }
+.mine.is-flag { color: var(--red); }
+.mine.is-bomb { background: var(--red); color: #fff; }
+.mine[data-n="1"] { color: #1b4b8f; } .mine[data-n="2"] { color: #3e6b3a; }
+.mine[data-n="3"] { color: #9e2b25; } .mine[data-n="4"] { color: #414277; }
+.mine[data-n="5"] { color: #8a531b; } .mine[data-n="6"] { color: #2d4a47; }
+.mine[data-n="7"] { color: #7a3468; } .mine[data-n="8"] { color: #565043; }
+.mine:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+
+/* Night: keep the chrome as-is (a real browser), only the page goes dark. */
+[data-theme="night"] .browser__viewport { background: var(--teal); }

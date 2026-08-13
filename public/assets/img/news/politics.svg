@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="SERIOUS POLITICS illustration">
+  <defs>
+    <pattern id="ht" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#1c1b17" opacity="0.10"/>
+    </pattern>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f1e6"/>
+      <stop offset="1" stop-color="#e7dfcd"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="280" fill="url(#sky)"/>
+  <rect width="400" height="280" fill="url(#ht)"/>
+  <rect x="6" y="6" width="388" height="268" fill="none" stroke="#1c1b17" stroke-width="2" opacity="0.7"/>
+  <g stroke="#1c1b17" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M170 190 h60 l-8 -70 h-44 z" fill="#8f2f2c" opacity="0.16"/>
+    <path d="M170 190 h60 l-8 -70 h-44 z"/>
+    <path d="M200 120 v-26"/>
+    <circle cx="200" cy="80" r="14" fill="#8f2f2c"/>
+    <path d="M200 66 v-18"/>
+    <path d="M150 190 h100"/>
+    <path d="M186 150 h28" stroke-width="4"/>
+  </g>
+  <g transform="translate(0,244)">
+    <rect x="6" y="0" width="388" height="30" fill="#8f2f2c"/>
+    <text x="200" y="21" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="15" letter-spacing="3" fill="#f6f1e6">SERIOUS POLITICS</text>
+  </g>
+</svg>

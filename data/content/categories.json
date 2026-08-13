@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {
+      "slug": "world",
+      "name_en": "World Baffling",
+      "name_ja": "世界のアホ",
+      "color": "#2b5f6e",
+      "blurb_en": "Global nonsense, freshly imported.",
+      "blurb_ja": "世界中のバカニュース。"
+    },
+    {
+      "slug": "politics",
+      "name_en": "Serious Politics",
+      "name_ja": "マジメ政治",
+      "color": "#8f2f2c",
+      "blurb_en": "Very important. Very fake.",
+      "blurb_ja": "とても重要。とても嘘。"
+    },
+    {
+      "slug": "animals",
+      "name_en": "Animal Affairs",
+      "name_ja": "動物のお仕事",
+      "color": "#3e6b3a",
+      "blurb_en": "The beasts are running things now.",
+      "blurb_ja": "もう動物が仕切ってます。"
+    },
+    {
+      "slug": "science",
+      "name_en": "Fake Science",
+      "name_ja": "ニセ科学",
+      "color": "#34566e",
+      "blurb_en": "Peer-reviewed by nobody.",
+      "blurb_ja": "査読ゼロ。"
+    },
+    {
+      "slug": "food",
+      "name_en": "Food Fights",
+      "name_ja": "食のケンカ",
+      "color": "#8a531b",
+      "blurb_en": "Cuisine, but litigious.",
+      "blurb_ja": "料理、ただし訴訟あり。"
+    },
+    {
+      "slug": "tech",
+      "name_en": "Techno Panic",
+      "name_ja": "テクノ・パニック",
+      "color": "#414277",
+      "blurb_en": "The machines have feelings now.",
+      "blurb_ja": "機械にも感情があるらしい。"
+    },
+    {
+      "slug": "weird",
+      "name_en": "Just Weird",
+      "name_ja": "ただ変",
+      "color": "#7a3468",
+      "blurb_en": "We could not categorize these.",
+      "blurb_ja": "分類不能。"
+    }
+  ]
+}

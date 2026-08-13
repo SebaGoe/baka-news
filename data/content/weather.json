@@ -1,0 +1,36 @@
+{
+  "weather": [
+    {
+      "en": "Aggressively sunny with a 100% chance of squinting",
+      "ja": "猛烈に晴れ、目を細める確率100%"
+    },
+    {
+      "en": "Light drizzle of mild disappointment",
+      "ja": "ほのかな失望のにわか雨"
+    },
+    {
+      "en": "Fog so thick you forget your own plans",
+      "ja": "自分の予定を忘れるほどの濃霧"
+    },
+    {
+      "en": "Rainbows, but they lead nowhere",
+      "ja": "虹、ただしどこにも通じない"
+    },
+    {
+      "en": "Flurries of unsolicited advice",
+      "ja": "頼んでもいない助言の吹雪"
+    },
+    {
+      "en": "Mild tornado of enthusiasm",
+      "ja": "ほどよい熱意の竜巻"
+    },
+    {
+      "en": "Partly haunted, clearing by lunch",
+      "ja": "ところによりお化け、昼までに回復"
+    },
+    {
+      "en": "Yes",
+      "ja": "はい"
+    }
+  ]
+}

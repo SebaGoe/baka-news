@@ -1,0 +1,7 @@
+/vendor/
+/storage/*
+!/storage/.gitkeep
+/data/db/*.sqlite
+/data/db/*.sqlite-*
+.DS_Store
+*.log

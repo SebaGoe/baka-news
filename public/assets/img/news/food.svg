@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" role="img" aria-label="FOOD FIGHTS illustration">
+  <defs>
+    <pattern id="ht" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#1c1b17" opacity="0.10"/>
+    </pattern>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6f1e6"/>
+      <stop offset="1" stop-color="#e7dfcd"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="280" fill="url(#sky)"/>
+  <rect width="400" height="280" fill="url(#ht)"/>
+  <rect x="6" y="6" width="388" height="268" fill="none" stroke="#1c1b17" stroke-width="2" opacity="0.7"/>
+  <g stroke="#1c1b17" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <circle cx="200" cy="130" r="68" fill="#8a531b" opacity="0.16"/>
+    <circle cx="200" cy="130" r="68"/>
+    <circle cx="200" cy="130" r="44"/>
+    <path d="M120 96 v68 M112 96 v34 q0 8 8 8 M128 96 v34 q0 8 -8 8" stroke-width="4"/>
+    <path d="M284 96 q-16 4 -16 40 q0 12 10 12 v24" stroke-width="4"/>
+  </g>
+  <g transform="translate(0,244)">
+    <rect x="6" y="0" width="388" height="30" fill="#8a531b"/>
+    <text x="200" y="21" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="15" letter-spacing="3" fill="#f6f1e6">FOOD FIGHTS</text>
+  </g>
+</svg>
