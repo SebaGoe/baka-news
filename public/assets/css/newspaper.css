@@ -2,13 +2,13 @@
    Newspaper — the elegant broadsheet half of the design.
    ========================================================================== */
 
-/* ---- Masthead ---- */
+/* ---- Masthead (mobile-first: a centered stack; broadsheet grid on wider screens) ---- */
 .masthead {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: .5rem;
-  padding: .8rem 1rem .4rem;
+  gap: .35rem;
+  padding: .7rem .8rem .3rem;
   text-align: center;
 }
 .masthead__meta {
@@ -16,10 +16,12 @@
   font-size: var(--fs-small);
   color: var(--ink-soft);
   line-height: 1.4;
+  width: 100%;
 }
-.masthead__meta--left { text-align: left; }
-.masthead__meta--right { text-align: right; }
-.masthead__title { grid-column: 2; text-decoration: none; color: var(--ink); display: block; }
+/* On mobile the meta blocks read as centered edition lines, title first. */
+.masthead__title { order: -1; text-decoration: none; color: var(--ink); display: block; }
+.masthead__meta--left { order: 1; }
+.masthead__meta--right { order: 2; }
 .masthead__title-main {
   display: block;
   font-family: var(--font-masthead);
@@ -30,10 +32,23 @@
 .masthead__title-sub {
   display: block;
   font-family: var(--font-body);
-  font-size: clamp(.8rem, 2vw, 1.1rem);
-  letter-spacing: .5em;
+  font-size: clamp(.7rem, 3.4vw, 1.1rem);
+  letter-spacing: .18em;
   color: var(--ink-soft);
   margin-top: .1rem;
+}
+@media (min-width: 760px) {
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: .5rem;
+    padding: .8rem 1rem .4rem;
+  }
+  .masthead__title { order: 0; grid-column: 2; }
+  .masthead__meta--left  { order: 0; text-align: left; }
+  .masthead__meta--right { order: 0; text-align: right; }
+  .masthead__title-sub { letter-spacing: .5em; }
 }
 .masthead__rule {
   grid-column: 1 / -1;
@@ -44,7 +59,8 @@
 }
 
 /* language toggle */
-.lang-toggle { margin-top: .3rem; display: inline-flex; gap: 2px; justify-content: flex-end; }
+.lang-toggle { margin-top: .3rem; display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
+@media (min-width: 760px) { .lang-toggle { justify-content: flex-end; } }
 .lang-toggle__btn {
   font-family: var(--font-retro); font-size: 1rem; text-decoration: none;
   padding: 0 .4rem; color: var(--ink); background: var(--chrome);

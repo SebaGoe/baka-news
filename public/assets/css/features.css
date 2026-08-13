@@ -5,11 +5,16 @@
 
 /* ---- Masthead tools (search / surprise / night) ---- */
 .masthead__weather { font-family: var(--font-type); color: var(--ink-soft); margin-top: .15rem; }
-.masthead__tools { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: flex-end; align-items: center; margin: .3rem 0; }
-.masthead__search { display: flex; }
+.masthead__tools { display: flex; flex-wrap: wrap; gap: .3rem; justify-content: center; align-items: center; margin: .3rem 0; }
+.masthead__search { display: flex; flex: 1 1 12rem; min-width: 0; }
 .masthead__search input {
-  font: inherit; font-size: .9rem; padding: .1rem .4rem; width: min(42vw, 160px);
+  font: inherit; font-size: .9rem; padding: .1rem .4rem; flex: 1 1 auto; min-width: 0; width: auto;
   background: #fff; border: 2px solid; border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+}
+@media (min-width: 760px) {
+  .masthead__tools { justify-content: flex-end; }
+  .masthead__search { flex: 0 0 auto; }
+  .masthead__search input { flex: 0 0 auto; width: min(42vw, 160px); }
 }
 .masthead__search button, .btn-tiny {
   font-family: var(--font-retro); font-size: .95rem; cursor: pointer; text-decoration: none;
