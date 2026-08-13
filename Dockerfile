@@ -1,9 +1,9 @@
 # Baka News — minimal PHP image for Render.
 FROM php:8.2-cli-alpine
 
-# Build deps for the mbstring extension (multilingual content needs it).
-RUN apk add --no-cache oniguruma-dev \
- && docker-php-ext-install pdo pdo_sqlite mbstring
+# Build deps: oniguruma-dev for mbstring, sqlite-dev for pdo_sqlite.
+RUN apk add --no-cache oniguruma-dev sqlite-dev \
+ && docker-php-ext-install pdo_sqlite mbstring
 
 WORKDIR /app
 COPY . /app

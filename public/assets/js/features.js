@@ -26,6 +26,7 @@
       if (!on || reduce) return;
       try {
         ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended' && ctx.resume) ctx.resume(); // browsers can auto-suspend
         const o = ctx.createOscillator(), g = ctx.createGain();
         o.type = type || 'square'; o.frequency.value = freq;
         g.gain.value = 0.04; o.connect(g); g.connect(ctx.destination);
