@@ -69,7 +69,8 @@ function wiki(string $title, string $ua): ?array {
   $page = $d['content_urls']['desktop']['page'] ?? null;
   $extract = trim((string)($d['extract'] ?? ''));
   if (!$page || $extract === '') return null;
-  return ['title'=>$d['title'] ?? $title, 'url'=>$page, 'extract'=>$extract];
+  $img = $d['originalimage']['source'] ?? $d['thumbnail']['source'] ?? '';
+  return ['title'=>$d['title'] ?? $title, 'url'=>$page, 'extract'=>$extract, 'image'=>$img];
 }
 
 $out = [];
@@ -86,6 +87,7 @@ foreach ($SEED as [$title, $year, $tag]) {
     'url'    => $w['url'],
     'date'   => sprintf('%04d-01-01', $year),
     'origin' => $tag,
+    'image'  => $w['image'],
   ];
   printf("  ok %-40s %d\n", $w['title'], $year);
   usleep(120000); // be polite to the API

@@ -150,6 +150,8 @@
 }
 .card__origin { }
 .card__cat { margin-left: auto; color: var(--c, var(--ink-soft)); font-weight: 600; }
+.card__origin--link { color: var(--link); }
+.card__link:hover .card__origin--link { text-decoration: underline; }
 .card__headline {
   font-family: var(--font-display); font-weight: 900; line-height: 1.05;
   font-size: var(--fs-head); margin: 0 0 .25rem;

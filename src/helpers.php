@@ -34,7 +34,7 @@ if (!function_exists('current_mode')) {
     /**
      * Which edition the reader is viewing: 'fake' (our invented Baka News) or
      * 'real' (genuinely true but absurd stories). Set via ?mode= and remembered
-     * in a cookie. Defaults to 'fake'.
+     * in a cookie. Defaults to 'real' (the weird-but-true edition loads first).
      */
     function current_mode(): string
     {
@@ -43,8 +43,8 @@ if (!function_exists('current_mode')) {
             setcookie('baka_mode', $_GET['mode'], time() + 31536000, '/');
             return $_GET['mode'];
         }
-        $cookie = $_COOKIE['baka_mode'] ?? 'fake';
-        return in_array($cookie, $allowed, true) ? $cookie : 'fake';
+        $cookie = $_COOKIE['baka_mode'] ?? 'real';
+        return in_array($cookie, $allowed, true) ? $cookie : 'real';
     }
 }
 

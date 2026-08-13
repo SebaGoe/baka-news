@@ -14,27 +14,32 @@
   <div class="real-banner">
     <span class="real-banner__stamp">REAL</span>
     <p>You are reading the <b>Real Edition</b>. These stories actually happened somewhere on Earth.
-       Tap any story to read it at the source. Want nonsense again?
-       <a class="real-banner__switch" href="?mode=fake">Back to Baka (Fake) News &rarr;</a></p>
+       Tap any story to read it at the source. Want our invented nonsense instead?
+       <a class="real-banner__switch" href="?mode=fake">Switch to Baka (Fake) News &rarr;</a></p>
   </div>
 
   <?php if (empty($stories)): ?>
     <p class="empty">The real world is briefly behaving itself. Try again shortly.</p>
   <?php else: ?>
-  <div class="real-grid">
-    <?php foreach ($stories as $s): ?>
-      <article class="realcard">
-        <a class="realcard__link" href="<?= e($s['url']) ?>" target="_blank" rel="noopener nofollow">
-          <div class="realcard__kicker">
-            <span class="origin-code"><?= e($s['source'] ?? 'News') ?></span>
-            <span class="realcard__domain"><?= e($s['domain'] ?? '') ?></span>
-            <span class="realcard__date"><?= e($s['date'] ?? '') ?></span>
-          </div>
-          <h2 class="realcard__headline"><?= e($s['title']) ?></h2>
-          <?php if (!empty($s['blurb'])): ?>
-            <p class="realcard__blurb"><?= e($s['blurb']) ?></p>
+  <div class="grid">
+    <?php foreach ($stories as $i => $s):
+      $size   = $i === 0 ? 'lead' : ($i < 3 ? 'feature' : 'standard');
+      $hasImg = !empty($s['image']);
+    ?>
+      <article class="card card--<?= $size ?><?= $hasImg ? ' card--has-img' : '' ?>">
+        <a class="card__link" href="<?= e($s['url']) ?>" target="_blank" rel="noopener nofollow">
+          <?php if ($hasImg): ?>
+            <img class="card__img" src="<?= e($s['image']) ?>" alt="" loading="lazy" referrerpolicy="no-referrer"
+                 onerror="this.closest('.card').classList.remove('card--has-img'); this.remove();">
           <?php endif; ?>
-          <span class="realcard__more">Read at <?= e($s['domain'] ?? 'source') ?> &nearr;</span>
+          <div class="card__kicker">
+            <span class="origin-code"><?= e($s['source'] ?? 'News') ?></span>
+            <span class="card__origin card__origin--link"><?= e($s['domain'] ?? '') ?></span>
+            <span class="card__cat"><?= e($s['date'] ?? '') ?></span>
+          </div>
+          <h2 class="card__headline"><?= e($s['title']) ?></h2>
+          <?php if (!empty($s['blurb'])): ?><p class="card__dek"><?= e($s['blurb']) ?></p><?php endif; ?>
+          <span class="card__more">Read at <?= e($s['domain'] ?? 'source') ?> &nearr;</span>
         </a>
       </article>
     <?php endforeach; ?>

@@ -77,7 +77,11 @@ final class RealNews
     public static function refresh(): int
     {
         $live = [];
+        $deadline = microtime(true) + 12; // never block a page render for long
         foreach (self::FEEDS as $name => $url) {
+            if (microtime(true) > $deadline) {
+                break;
+            }
             $xml = self::httpGet($url);
             if ($xml !== null) {
                 foreach (self::parse($xml, $name) as $it) {
@@ -141,6 +145,35 @@ final class RealNews
         return ($body !== false && $body !== '') ? $body : null;
     }
 
+    /** Pull a lead image from an RSS item: media:content/thumbnail, enclosure, or inline <img>. */
+    private static function extractImage(\SimpleXMLElement $item, string $rawDesc): string
+    {
+        $media = $item->children('http://search.yahoo.com/mrss/');
+        foreach (['content', 'thumbnail'] as $tag) {
+            if (isset($media->$tag)) {
+                foreach ($media->$tag as $node) {
+                    $u = (string) ($node->attributes()['url'] ?? '');
+                    if ($u !== '' && preg_match('/\.(jpe?g|png|webp|gif)/i', $u)) {
+                        return $u;
+                    }
+                }
+            }
+        }
+        if (isset($item->enclosure)) {
+            $type = (string) ($item->enclosure->attributes()['type'] ?? '');
+            $u = (string) ($item->enclosure->attributes()['url'] ?? '');
+            if ($u !== '' && (str_starts_with($type, 'image') || preg_match('/\.(jpe?g|png|webp|gif)/i', $u))) {
+                return $u;
+            }
+        }
+        $content = (string) $item->children('http://purl.org/rss/1.0/modules/content/')->encoded;
+        $hay = $content !== '' ? $content : $rawDesc;
+        if (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', html_entity_decode($hay, ENT_QUOTES | ENT_HTML5), $m)) {
+            return $m[1];
+        }
+        return '';
+    }
+
     /** @return array<int,array<string,string>> */
     private static function parse(string $xml, string $source): array
     {
@@ -157,7 +190,8 @@ final class RealNews
             if ($title === '' || $link === '' || preg_match(self::SKIP_TITLE, $title)) {
                 continue;
             }
-            $blurb = trim(preg_replace('/\s+/', ' ', strip_tags(html_entity_decode((string) $item->description, ENT_QUOTES | ENT_HTML5))));
+            $rawDesc = (string) $item->description;
+            $blurb = trim(preg_replace('/\s+/', ' ', strip_tags(html_entity_decode($rawDesc, ENT_QUOTES | ENT_HTML5))));
             $ts = strtotime((string) $item->pubDate) ?: time();
             $host = parse_url($link, PHP_URL_HOST) ?: '';
             $out[] = [
@@ -168,6 +202,7 @@ final class RealNews
                 'domain' => preg_replace('/^www\./', '', (string) $host),
                 'url'    => $link,
                 'date'   => date('Y-m-d', $ts),
+                'image'  => self::extractImage($item, $rawDesc),
             ];
         }
         return $out;
