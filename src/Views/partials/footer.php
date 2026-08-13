@@ -8,6 +8,7 @@
     <a href="<?= url('/guestbook') ?>">Guest Book</a>
     <a href="<?= url('/webring') ?>">Webring</a>
     <a href="<?= url('/arcade') ?>">Arcade</a>
+    <a href="<?= url('/random-page') ?>">Random Page</a>
     <a href="<?= url('/submit-page') ?>">Add Your Page</a>
     <a href="<?= url('/about') ?>">About</a>
     <a href="<?= url('/feed.xml') ?>">RSS</a>

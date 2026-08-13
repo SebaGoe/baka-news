@@ -117,6 +117,12 @@ $lang = current_lang();
       </div>
     </div>
 
+    <?php $mode = current_mode(); ?>
+    <div class="edition-stamp edition-stamp--<?= e($mode) ?>" aria-hidden="true">
+      <span class="edition-stamp__word"><?= $mode === 'real' ? 'REAL' : 'FAKE' ?></span>
+      <span class="edition-stamp__sub">EDITION</span>
+    </div>
+
     <?= View::partial('partials/mascot') ?>
 
     <script src="<?= asset('/assets/js/counter.js') ?>" defer></script>

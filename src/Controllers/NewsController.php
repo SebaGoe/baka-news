@@ -75,6 +75,38 @@ final class NewsController
         ]);
     }
 
+    /** JSON rounds for the "Real or Baka?" guessing game: mixed real + fake headlines. */
+    public function gameMix(): void
+    {
+        if (\Baka\RealNews::needsRefresh()) {
+            @\Baka\RealNews::refresh();
+        }
+        $real = \Baka\RealNews::items(500);
+        $fake = Content::articles();
+        shuffle($real);
+        shuffle($fake);
+        $n = 8;
+        $rounds = [];
+        foreach (array_slice($real, 0, $n) as $r) {
+            $rounds[] = [
+                't'    => $r['title'],
+                'real' => true,
+                'meta' => ($r['source'] ?? 'Real news') . ' — ' . ($r['domain'] ?? ''),
+                'url'  => '/real/story/' . $r['id'],
+            ];
+        }
+        foreach (array_slice($fake, 0, $n) as $a) {
+            $rounds[] = [
+                't'    => t($a['headline'], 'en'),
+                'real' => false,
+                'meta' => 'Baka News (invented in-house)',
+                'url'  => '/article/' . $a['id'],
+            ];
+        }
+        shuffle($rounds);
+        json_out(['rounds' => $rounds]);
+    }
+
     /** "Surprise me" — bounce to a random story in the active edition. */
     public function random(): void
     {

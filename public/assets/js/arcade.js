@@ -24,6 +24,7 @@
     });
     if (game === 'snake') Snake.draw();
     if (game === 'mines') Mines.ensure();
+    if (game === 'guess') Guess.ensure();
   }
   tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.game)));
 
@@ -265,7 +266,77 @@
     return { ensure };
   })();
 
+  // ---------------- Real or Baka? ----------------
+  const Guess = (function () {
+    const stage = $('guess-stage');
+    if (!stage) return { ensure() {} };
+    const elScore = $('guess-score'), elRound = $('guess-round'), elStreak = $('guess-streak'),
+          elHead = $('guess-headline'), elVerdict = $('guess-verdict'),
+          bReal = $('guess-real'), bFake = $('guess-fake'), startBtn = $('guess-start');
+    let rounds = [], i = 0, score = 0, streak = 0, loaded = false, busy = false;
+
+    function fetchRounds() {
+      return fetch('/game/mix.json').then(r => r.json()).then(d => { rounds = (d.rounds || []); }).catch(() => { rounds = []; });
+    }
+    function ensure() { if (!loaded) { loaded = true; fetchRounds(); } }
+
+    function show() {
+      if (i >= rounds.length) { return end(); }
+      const r = rounds[i];
+      elHead.textContent = '“' + r.t + '”';
+      elVerdict.textContent = '';
+      elVerdict.className = 'guess__verdict';
+      elRound.textContent = (i + 1);
+      bReal.disabled = bFake.disabled = false;
+      busy = false;
+    }
+    function guess(saidReal) {
+      if (busy || i >= rounds.length) return;
+      busy = true;
+      bReal.disabled = bFake.disabled = true;
+      const r = rounds[i];
+      const correct = (saidReal === r.real);
+      if (correct) { score++; streak++; coin(); } else { streak = 0; }
+      if (elScore) elScore.textContent = score;
+      if (elStreak) elStreak.textContent = streak;
+      elVerdict.innerHTML = (correct ? '&#10003; Correct! ' : '&#10007; Nope. ')
+        + 'That one is <b>' + (r.real ? 'REAL' : 'BAKA (fake)') + '</b> — ' + escapeHtml(r.meta)
+        + ' · <a href="' + r.url + '">see it</a>';
+      elVerdict.className = 'guess__verdict ' + (correct ? 'is-right' : 'is-wrong');
+      i++;
+      setTimeout(show, 1400);
+    }
+    function end() {
+      bReal.disabled = bFake.disabled = true;
+      startBtn.disabled = false; startBtn.textContent = 'Play again';
+      const n = rounds.length || 1;
+      elHead.textContent = 'You scored ' + score + ' / ' + n + '.';
+      elVerdict.textContent = score >= n * 0.85 ? 'Baka-dar: elite. The ghost is unsettled by your powers.'
+        : score >= n * 0.6 ? 'Solid. You know nonsense when you see it.'
+        : 'The line between real and baka is thin. Welcome to the internet.';
+      elVerdict.className = 'guess__verdict';
+    }
+    function start() {
+      startBtn.disabled = true; startBtn.textContent = 'Playing...';
+      elHead.textContent = 'Loading headlines...';
+      const go = () => {
+        if (!rounds.length) { elHead.textContent = 'Could not load headlines. Try again.'; startBtn.disabled = false; startBtn.textContent = 'Start game'; return; }
+        i = 0; score = 0; streak = 0;
+        if (elScore) elScore.textContent = '0';
+        if (elStreak) elStreak.textContent = '0';
+        elRound.textContent = '0';
+        show();
+      };
+      if (loaded && rounds.length) { go(); } else { loaded = true; fetchRounds().then(go); }
+    }
+    function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : s; return d.innerHTML; }
+    bReal && bReal.addEventListener('click', () => guess(true));
+    bFake && bFake.addEventListener('click', () => guess(false));
+    startBtn && startBtn.addEventListener('click', start);
+    return { ensure };
+  })();
+
   // Deep-link ?game=snake / #snake, or leave default whack.
   const wanted = (new URLSearchParams(location.search).get('game') || location.hash.replace('#', '')).toLowerCase();
-  if (['snake', 'mines', 'whack'].includes(wanted)) show(wanted);
+  if (['snake', 'mines', 'whack', 'guess'].includes(wanted)) show(wanted);
 })();

@@ -10,6 +10,7 @@
     <button class="arcade__tab is-active" role="tab" aria-selected="true" data-game="whack">Whack-a-Ghost</button>
     <button class="arcade__tab" role="tab" aria-selected="false" data-game="snake">Ghost Snake</button>
     <button class="arcade__tab" role="tab" aria-selected="false" data-game="mines">Baka-sweeper</button>
+    <button class="arcade__tab" role="tab" aria-selected="false" data-game="guess">Real or Baka?</button>
   </div>
 
   <!-- ============ Whack-a-Ghost ============ -->
@@ -61,6 +62,28 @@
     </div>
     <div class="minesweeper" id="mines-grid" role="group" aria-label="Baka-sweeper board"></div>
     <p class="arcade__msg" id="mines-msg">Click to reveal. <b>Right-click</b> (or long-press) to flag a ghost. Clear every safe square without waking a ghost.</p>
+  </div>
+
+  <!-- ============ Real or Baka? ============ -->
+  <div class="arcade__game" data-game-panel="guess" hidden>
+    <div class="arcade__hud">
+      <span class="arcade__stat">Score <b id="guess-score">0</b></span>
+      <span class="arcade__stat">Round <b id="guess-round">0</b>/16</span>
+      <span class="arcade__stat">Streak <b id="guess-streak">0</b></span>
+    </div>
+    <div class="guess" id="guess-stage">
+      <p class="guess__prompt">Real news, or invented Baka nonsense? You decide.</p>
+      <blockquote class="guess__headline" id="guess-headline">Press Start to play.</blockquote>
+      <div class="guess__buttons">
+        <button class="btn-retro guess__btn guess__btn--real" id="guess-real" type="button" disabled>It&rsquo;s REAL</button>
+        <button class="btn-retro guess__btn guess__btn--fake" id="guess-fake" type="button" disabled>It&rsquo;s BAKA</button>
+      </div>
+      <p class="guess__verdict" id="guess-verdict" aria-live="polite"></p>
+    </div>
+    <div class="arcade__actions">
+      <button class="btn-retro" type="button" id="guess-start">Start game</button>
+    </div>
+    <p class="arcade__msg">Sixteen headlines &mdash; half genuinely happened, half we made up. How sharp is your baka-dar?</p>
   </div>
 
   <div class="arcade__actions">

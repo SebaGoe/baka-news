@@ -3,6 +3,22 @@
    reactions, Night Edition, and print rules.
    ========================================================================== */
 
+/* ---- Edition watermark stamp (always shows which edition you're in) ---- */
+.edition-stamp {
+  position: fixed; left: 10px; bottom: 44px; z-index: 40; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; line-height: .9;
+  font-family: var(--font-display, Georgia, serif); font-weight: 900;
+  padding: .25rem .5rem; transform: rotate(-9deg); opacity: .82;
+  border: 3px solid currentColor; border-radius: 6px; letter-spacing: .04em;
+  background: rgba(244, 239, 228, .55);
+}
+.edition-stamp__word { font-size: 1.5rem; }
+.edition-stamp__sub { font-size: .62rem; letter-spacing: .3em; }
+.edition-stamp--real { color: var(--link); }
+.edition-stamp--fake { color: var(--accent); }
+@media (max-width: 700px) { .edition-stamp { transform: rotate(-9deg) scale(.8); bottom: 40px; } }
+@media print { .edition-stamp { display: none; } }
+
 /* ---- Edition toggle (Fake <-> Real) ---- */
 .edition-toggle { display: inline-flex; gap: 0; margin-bottom: .3rem; border: 2px solid var(--ink); }
 .masthead__meta--right .edition-toggle { margin-left: auto; }

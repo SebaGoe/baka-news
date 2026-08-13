@@ -33,6 +33,25 @@ final class PageController
         ]);
     }
 
+    /** "I'm feeling lucky" — jump to a random fun corner of our own site. */
+    public function randomPage(): void
+    {
+        $pages = [
+            '/construction', '/construction', // weighted: the 90s classic
+            '/arcade', '/coupons', '/guestbook', '/webring',
+            '/horoscope', '/classifieds', '/ads', '/about',
+        ];
+        // Sometimes surprise with a random story in the active edition.
+        if (current_mode() === 'real') {
+            $s = \Baka\RealNews::randomItem();
+            if ($s) { $pages[] = '/real/story/' . $s['id']; }
+        } else {
+            $a = Content::randomArticle();
+            if ($a) { $pages[] = '/article/' . $a['id']; }
+        }
+        redirect($pages[array_rand($pages)]);
+    }
+
     // ---------- Horoscopes ----------
     public function horoscope(): string
     {

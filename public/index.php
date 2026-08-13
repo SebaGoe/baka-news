@@ -61,5 +61,7 @@ $router->get('/counter.json', [CommunityController::class, 'counterJson']);   //
 $router->get('/about', [PageController::class, 'about']);
 $router->get('/arcade', [PageController::class, 'arcade']);
 $router->get('/construction', [PageController::class, 'construction']);
+$router->get('/random-page', [PageController::class, 'randomPage']);
+$router->get('/game/mix.json', [NewsController::class, 'gameMix']);        // JSON
 
 $router->dispatch();

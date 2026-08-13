@@ -292,5 +292,25 @@ body.is-min .virus-ad {
 .mine[data-n="7"] { color: #7a3468; } .mine[data-n="8"] { color: #565043; }
 .mine:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
 
+/* Real or Baka? */
+.guess { max-width: 620px; margin: 0 auto; text-align: center; }
+.guess__prompt { font-family: var(--font-type); color: var(--ink-soft); }
+.guess__headline {
+  font-family: var(--font-display); font-weight: 900; font-size: clamp(1.2rem, 3.5vw, 1.9rem);
+  line-height: 1.15; margin: 1rem auto; padding: 1rem 1.1rem; min-height: 3.5em;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper-2); border: 2px solid;
+  border-color: var(--bevel-dark) var(--bevel-light) var(--bevel-light) var(--bevel-dark);
+}
+.guess__buttons { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.guess__btn { font-size: 1.05rem; padding: .5rem 1.1rem; }
+.guess__btn--real { background: var(--link); color: #fff; border-color: #4a74b4 #123a72 #123a72 #4a74b4; }
+.guess__btn--fake { background: var(--accent); color: #fff; border-color: #c05a54 #6f1f1b #6f1f1b #c05a54; }
+.guess__btn:disabled { opacity: .5; cursor: default; }
+.guess__verdict { font-family: var(--font-type); min-height: 1.6em; margin-top: .9rem; }
+.guess__verdict.is-right { color: var(--sage-line); }
+.guess__verdict.is-wrong { color: var(--accent); }
+.guess__verdict a { color: var(--link); }
+
 /* Night: keep the chrome as-is (a real browser), only the page goes dark. */
 [data-theme="night"] .browser__viewport { background: var(--teal); }

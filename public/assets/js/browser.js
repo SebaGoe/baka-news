@@ -183,7 +183,8 @@
       { label: 'Add Bookmark', action: () => modal('Add Bookmark', 'Bookmarked! (In your heart. We do not have a database for feelings.)') },
       { sep: true },
       { label: 'The Arcade', href: '/arcade' }, { label: 'Coupon Vault', href: '/coupons' },
-      { label: 'A Random Story', href: '/random' }
+      { label: 'A Random Story', href: '/random' },
+      { label: 'A Random Baka Page', href: '/random-page' }
     ],
     options: [
       { label: 'Toggle Night Edition', action: () => { const b = document.getElementById('night-toggle'); b && b.click(); } },
