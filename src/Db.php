@@ -104,8 +104,17 @@ final class Db
         if ($count === 0) {
             $db->exec("INSERT INTO webring (site_name, url, description) VALUES
                 ('Baka News HQ', '/', 'You are here. Hi.'),
-                ('The Haunted Homepage', 'https://example.com', 'Spooky pixels since 1997.'),
-                ('Dave''s Dolphin Facts', 'https://example.com', '100% true dolphin content.')");
+                ('Devippo', 'https://devippo.com/', 'Real code, real projects. A rare outbreak of things that actually exist.'),
+                ('Devippo on YouTube', 'https://www.youtube.com/@devippo', 'Watch the builds happen, live and gloriously unfiltered.'),
+                ('Anjin', 'https://www.anjin.tech/', 'Genuine tech from a genuine corner of the internet.')");
+        }
+
+        // Seed the homepage link-wall with a few real neighbours.
+        if ((int) $db->query('SELECT COUNT(*) FROM user_pages')->fetchColumn() === 0) {
+            $db->exec("INSERT INTO user_pages (title, url, blurb, badge) VALUES
+                ('Devippo', 'https://devippo.com/', 'Actual real code and projects. Suspiciously real for this website.', 'WWW'),
+                ('Devippo on YouTube', 'https://www.youtube.com/@devippo', 'Dev videos, builds, and assorted tinkering.', 'TUBE'),
+                ('Anjin', 'https://www.anjin.tech/', 'A real technology homepage. We checked. It loads and everything.', 'TECH')");
         }
 
         // Seed the poll of the week.
@@ -122,10 +131,10 @@ final class Db
         // Seed a few classifieds so the section is never empty.
         if ((int) $db->query('SELECT COUNT(*) FROM classifieds')->fetchColumn() === 0) {
             $db->exec("INSERT INTO classifieds (section, title, body, contact) VALUES
-                ('wanted', 'WANTED: Left socks', 'Have 40 right socks. Seeking their partners. No questions asked.', 'sock@example.com'),
-                ('for-sale', 'FOR SALE: Slightly used echo', 'Barely said anything into it. Repeats itself. $5 obo.', 'hello-hello@example.com'),
-                ('lost-found', 'LOST: My train of thought', 'Last seen mid-sentence. Reward: a firm nod.', 'um@example.com'),
-                ('services', 'Ghost available for light haunting', 'Weekends only. Very polite. Will not rearrange furniture without asking.', 'boo@example.com')");
+                ('wanted', 'WANTED: Left socks', 'Have 40 right socks. Seeking their partners. No questions asked.', 'sock@bakanews.web'),
+                ('for-sale', 'FOR SALE: Slightly used echo', 'Barely said anything into it. Repeats itself. $5 obo.', 'hello-hello@bakanews.web'),
+                ('lost-found', 'LOST: My train of thought', 'Last seen mid-sentence. Reward: a firm nod.', 'um@bakanews.web'),
+                ('services', 'Ghost available for light haunting', 'Weekends only. Very polite. Will not rearrange furniture without asking.', 'boo@bakanews.web')");
         }
     }
 
