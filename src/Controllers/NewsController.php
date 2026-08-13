@@ -9,14 +9,44 @@ use Baka\View;
 
 final class NewsController
 {
-    /** Search across all articles + languages. */
+    /** Search across all articles + languages (or the real feed in Real mode). */
     public function search(): string
     {
         $q = (string) ($_GET['q'] ?? '');
+        if (current_mode() === 'real') {
+            if ($q !== '' && \Baka\RealNews::needsRefresh()) {
+                @\Baka\RealNews::refresh();
+            }
+            return View::render('pages/real-search', [
+                'title'      => $q !== '' ? 'Real search: ' . $q . ' — Baka News' : 'Baka News — Real Search',
+                'query'      => $q,
+                'stories'    => $q !== '' ? \Baka\RealNews::search($q) : [],
+                'categories' => Content::categories(),
+            ]);
+        }
         return View::render('pages/search', [
             'title'      => $q !== '' ? 'Search: ' . $q . ' — Baka News' : 'Baka News — Search',
             'query'      => $q,
             'results'    => Content::search($q),
+            'categories' => Content::categories(),
+        ]);
+    }
+
+    /** A single real weird-news story detail page. */
+    public function realArticle(array $params): string
+    {
+        if (\Baka\RealNews::needsRefresh()) {
+            @\Baka\RealNews::refresh();
+        }
+        $story = \Baka\RealNews::item($params['id'] ?? '');
+        if (!$story) {
+            http_response_code(404);
+            return View::render('pages/404', ['title' => '404 — Story Wandered Off']);
+        }
+        return View::render('pages/real-article', [
+            'title'      => $story['title'] . ' — Baka News (Real)',
+            'story'      => $story,
+            'related'    => \Baka\RealNews::related($story),
             'categories' => Content::categories(),
         ]);
     }
@@ -45,9 +75,16 @@ final class NewsController
         ]);
     }
 
-    /** "Surprise me" — bounce to a random article. */
+    /** "Surprise me" — bounce to a random story in the active edition. */
     public function random(): void
     {
+        if (current_mode() === 'real') {
+            if (\Baka\RealNews::needsRefresh()) {
+                @\Baka\RealNews::refresh();
+            }
+            $s = \Baka\RealNews::randomItem();
+            redirect($s ? '/real/story/' . $s['id'] : '/');
+        }
         $a = Content::randomArticle();
         redirect($a ? '/article/' . $a['id'] : '/');
     }

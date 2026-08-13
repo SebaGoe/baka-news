@@ -138,6 +138,65 @@ final class RealNews
         return self::readJson(BAKA_DATA . '/content/real-archive.json') ?: [];
     }
 
+    /** A single story by id (for the detail page). */
+    public static function item(string $id): ?array
+    {
+        foreach (self::items(1000) as $it) {
+            if (($it['id'] ?? '') === $id) {
+                return $it;
+            }
+        }
+        return null;
+    }
+
+    /** A random story (for "Surprise me" in the Real edition). */
+    public static function randomItem(): ?array
+    {
+        $a = self::items(1000);
+        return $a ? $a[array_rand($a)] : null;
+    }
+
+    /** Full-text-ish search over the real feed. */
+    public static function search(string $q): array
+    {
+        $q = trim($q);
+        if ($q === '') {
+            return [];
+        }
+        $tokens = array_values(array_filter(preg_split('/\s+/u', mb_strtolower($q)) ?: []));
+        $out = [];
+        foreach (self::items(1000) as $it) {
+            $hay = mb_strtolower(($it['title'] ?? '') . ' ' . ($it['blurb'] ?? '') . ' '
+                . ($it['source'] ?? '') . ' ' . ($it['domain'] ?? '') . ' ' . ($it['category'] ?? ''));
+            $ok = true;
+            foreach ($tokens as $t) {
+                if (!str_contains($hay, $t)) { $ok = false; break; }
+            }
+            if ($ok) { $out[] = $it; }
+        }
+        return $out;
+    }
+
+    /** Other stories in the same category (for the detail page). */
+    public static function related(array $item, int $limit = 4): array
+    {
+        $cat = $item['category'] ?? '';
+        $id  = $item['id'] ?? '';
+        $out = [];
+        foreach (self::items(1000) as $it) {
+            if (($it['id'] ?? '') === $id) {
+                continue;
+            }
+            if (($it['category'] ?? '') === $cat) {
+                $out[] = $it;
+                if (count($out) >= $limit) {
+                    break;
+                }
+            }
+        }
+        return $out;
+    }
+
     // ---- internals ----
 
     private static function snapshotFile(): string

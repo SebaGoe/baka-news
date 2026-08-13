@@ -54,6 +54,12 @@
   .construction__blink { animation: none; }
 }
 
+/* Real-edition detail bits */
+.btn-retro--go { background: var(--link); color: #fff; border-color: #4a74b4 #123a72 #123a72 #4a74b4; font-weight: 700; }
+.btn-retro--go:hover { background: #163a6e; }
+.story__stamp--real { color: var(--sage-line); border-color: var(--sage-line); }
+.real-story__note { font-family: var(--font-type); font-style: italic; color: var(--ink-soft); }
+
 /* ---- Beveled buttons ---- */
 .btn-retro {
   display: inline-block;

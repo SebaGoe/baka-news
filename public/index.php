@@ -27,6 +27,7 @@ $router->post('/article/react', [NewsController::class, 'react']);       // JSON
 $router->get('/feed.xml', [PageController::class, 'rss']);               // RSS
 $router->get('/healthz', [NewsController::class, 'health']);            // keep-alive
 $router->get('/real/refresh', [NewsController::class, 'refreshReal']);  // JSON
+$router->get('/real/story/{id}', [NewsController::class, 'realArticle']);
 
 // --- Sections (newspaper staples) ---
 $router->get('/horoscope', [PageController::class, 'horoscope']);
